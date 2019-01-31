@@ -33,7 +33,7 @@ export default class ProfileScreen extends React.Component {
         </View>
       </View>
       <View>
-        <View>
+        <View style={{ paddingBottom: 40 }}>
           <Text style={styles.subTitle}>Heather App</Text>
           <Text style={styles.text}>Heather helpt je zelfbewuster te worden van je emoties door deze dagelijks bij te houden. Doe aan zelf-coaching door reizen op te stellen om deze emoties de baas te worden via talloze motiverende of rustgevende oefeningen.</Text>
         </View>
@@ -41,7 +41,23 @@ export default class ProfileScreen extends React.Component {
           <Text style={[styles.subTitle, styles.orange]}>Hulpcentrum</Text>
           <Text style={[styles.text, styles.orange]}>Heb je verdere hulp nodig? Geen zorgen, we got you! Hier zijn enkele geweldige organisaties.</Text>
         </View>
-        <Text>Privacybeleid &amp; gebruikerovereenkomsten</Text>
+        <View>
+          <Text style={styles.orgName}>Awel</Text>
+          <Text style={[styles.text, styles.lichtBlauw]}>Awel ik wil wel een babbel!</Text>
+          <View style={styles.orgContact}>
+            <Image source={require("./../assets/images/phone_icon.png")} />
+            <Text style={styles.text}>tel</Text>
+          </View>
+          <View style={styles.orgContact}>
+            <Image source={require("./../assets/images/chat_icon.png")} />
+            <Text style={styles.text}>chat</Text>
+          </View>
+          <View style={styles.orgContact}>
+            <Image source={require("./../assets/images/site_icon.png")} />
+            <Text style={styles.text}>site</Text>
+          </View>
+        </View>
+        <Text style={styles.text}>Privacybeleid &amp; gebruikerovereenkomsten</Text>
       </View>
 
     </View>;
@@ -71,7 +87,8 @@ const styles = StyleSheet.create({
   arrow: {
   },
   statsContainer: {
-    paddingTop: 10
+    paddingTop: 10,
+    paddingBottom: 40
   },
   stats: {
     flexDirection: 'row',
@@ -82,11 +99,13 @@ const styles = StyleSheet.create({
     color: '#104664',
     fontSize: 24,
     fontWeight: 'bold',
-    paddingTop: 40,
     paddingBottom: 10
   },
   orange: {
     color: '#F2994A'
+  },
+  lichtBlauw: {
+    color: '#A7D4EC'
   },
   text: {
     fontSize: 16,
@@ -102,7 +121,19 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16
   },
-  center: {
-    justifyContent: 'center'
+  orgName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#104664'
+  },
+  orgContact: {
+    flexDirection: 'row',
+    alignContent: 'center'
+  },
+  orgChat: {
+
+  },
+  orgSite: {
+
   },
 });
