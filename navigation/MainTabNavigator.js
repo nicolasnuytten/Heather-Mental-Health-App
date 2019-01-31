@@ -5,8 +5,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import MoodScreen from '../screens/MoodScreen';
-import ReisScreen from '../screens/ReisScreen';
-import ProfileScreen from '../screens/ProfileScreen';
+import ReizenScreen from '../screens/ReizenScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -36,26 +35,12 @@ MoodStack.navigationOptions = {
   )
 };
 
-const ReisStack = createStackNavigator({
-  Reis: ReisScreen
+const ReizenStack = createStackNavigator({
+  Reizen: ReizenScreen
 });
 
-ReisStack.navigationOptions = {
+ReizenStack.navigationOptions = {
   tabBarLabel: "Reizen",
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === "ios" ? "ios-airplane" : "md-airplane"}
-    />
-  )
-}
-;
-const ProfileStack = createStackNavigator({
-  Reis: ProfileScreen
-});
-
-ProfileStack.navigationOptions = {
-  tabBarLabel: "Profile",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -67,5 +52,5 @@ ProfileStack.navigationOptions = {
 export default createBottomTabNavigator({
   MoodStack,
   HomeStack,
-  ReisStack
+  ReizenStack
 });

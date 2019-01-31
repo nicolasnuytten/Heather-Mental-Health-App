@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, TouchableHighlight, Image, Button } from 'react
 import { Icon } from "react-native-elements";
 import { createStackNavigator, createAppNavigator } from "react-navigation";
 
-export default class Profilescreen extends React.Component {
+export default class ProfileScreen extends React.Component {
   static navigationOptions = {
     header: "Profile",
   };
