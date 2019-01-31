@@ -23,8 +23,8 @@ export default class Homescreen extends React.Component {
           <View>
             <Text style={styles.title}>Welkom Jolien! </Text>
             <View style={styles.subTitle}>
-              <Text style={[styles.dag, styles.mediumBlauw]}>Maandag</Text>
-              <Text style={[styles.datum, styles.mediumBlauw]}>21/01/2019</Text>
+              <Text style={[styles.day, styles.mediumBlauw]}>Maandag</Text>
+              <Text style={[styles.date, styles.mediumBlauw]}>21/01/2019</Text>
             </View>
           </View>
           <TouchableHighlight onPress={() => navigate("Profile")}>
@@ -32,12 +32,12 @@ export default class Homescreen extends React.Component {
           </TouchableHighlight>
         </View>
         <View style={styles.wolkContainer}>
-          <Text style={[styles.tekst, styles.donkerBlauw]}>Hoe voel je je vandaag?</Text>
+          <Text style={[styles.text, styles.donkerBlauw]}>Hoe voel je je vandaag?</Text>
           <Button style={styles.button} title="Vul in" onPress={() => navigate("CreateMood")} />
         </View>
         <View style={styles.reizenContainer}>
-          <Text style={styles.reizenTitel}>Mijn reizen</Text>
-          <Text style={[styles.tekst, styles.donkerBlauw]}>Je hebt nog geen reizen gemaakt, eens proberen?</Text>
+          <Text style={styles.reizenTitle}>Mijn reizen</Text>
+          <Text style={[styles.text, styles.donkerBlauw]}>Je hebt nog geen reizen gemaakt, eens proberen?</Text>
           <Button title="Reis maken" onPress={() => navigate("Reizen")} />
         </View>
       </View>
@@ -117,22 +117,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 10
   },
-  dag: {
+  day: {
     fontSize: 22
   },
-  datum: {
+  date: {
     paddingLeft: 5,
     fontSize: 16
   },
-  reizenTitel: {
+  reizenTitle: {
     color: 'white',
     fontSize: 24,
     fontWeight: 'bold'
   },
-  tekst: {
+  text: {
     fontSize: 16,
     textAlign: 'center',
     width: 250,
-    justifyContent: 'center'
+    alignSelf: 'center'
   }
 });
