@@ -5,22 +5,35 @@ import AppNavigator from './navigation/AppNavigator';
 import Onboarding from './components/Onboarding';
 import checkIfFirstLaunch from "./utils/OnboardingCheck";
 
-
 const HAS_LAUNCHED = "hasLaunched";
 
 export default class App extends React.Component {
-  state = {
-    isLoadingComplete: false,
-    firstLaunch: null,
-  };
+  state = { firstLaunch: null};
   
-  async componentWillMount() {
-    const isFirstLaunch = await checkIfFirstLaunch();
-    this.setState({ isFirstLaunch, hasCheckedAsyncStorage: false });
+  componentDidMount() {
+    AsyncStorage.getItem('alreadyLaunched').then(value => {
+      value = true;
+      if (value == null) {
+        AsyncStorage.setItem('alreadyLaunched', 'true'); // No need to wait for `setItem` to finish, although you might want to handle errors
+        this.setState({ firstLaunch: true });
+      }
+      else {
+        this.setState({ firstLaunch: false });
+      }
+    }) // Add some error handling, also you can simply do this.setState({fistLaunch: value == null})
   }
 
   render() {
-      return <Onboarding />;
+    if (this.state.firstLaunch === null) {
+      return null; 
+    } else if (this.state.firstLaunch === true) {
+      return <Onboarding />
+    } else {
+      return <View style={styles.container}>
+          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          <AppNavigator />
+        </View>;
+    }
   }
 
   _loadResourcesAsync = async () => {
@@ -53,6 +66,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-  },
+    backgroundColor: "#fff"
+  }
 });

@@ -1,0 +1,21 @@
+{
+  "reizen" : {
+    "voltooid": [
+      {
+        "name": "Goedemorgen",
+        "goals": "4",
+        "date": "26/01/2019"
+      },
+      {
+        "name": "Avondritueel",
+        "goals": "6",
+        "date": "24/01/2019"
+      },
+      {
+        "name": "Productiviteit",
+        "goals": "3",
+        "date": "21/01/2019"
+      }
+    ]
+  }
+}

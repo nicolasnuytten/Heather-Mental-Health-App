@@ -4,56 +4,68 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import MoodScreen from '../screens/MoodScreen';
+import ReisScreen from '../screens/ReisScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Kalender',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-};
-
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
-});
-
-LinksStack.navigationOptions = {
   tabBarLabel: "Home",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
-    focused={focused}  
-    name={Platform.OS === "ios" ? "ios-home" : "md-home"}
-    />)
+      focused={focused}
+      name={Platform.OS === "ios" ? "ios-home" : "md-home"}
+    />
+  )
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const MoodStack = createStackNavigator({
+  Mood: MoodScreen
 });
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Reizen',
+MoodStack.navigationOptions = {
+  tabBarLabel: "Mood",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+      name={Platform.OS === "ios" ? "ios-thunderstorm" : "md-cloud"}
     />
-  ),
+  )
+};
+
+const ReisStack = createStackNavigator({
+  Reis: ReisScreen
+});
+
+ReisStack.navigationOptions = {
+  tabBarLabel: "Reizen",
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === "ios" ? "ios-airplane" : "md-airplane"}
+    />
+  )
+}
+;
+const ProfileStack = createStackNavigator({
+  Reis: ProfileScreen
+});
+
+ProfileStack.navigationOptions = {
+  tabBarLabel: "Profile",
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === "ios" ? "ios-airplane" : "md-airplane"}
+    />
+  )
 };
 
 export default createBottomTabNavigator({
+  MoodStack,
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  ReisStack
 });

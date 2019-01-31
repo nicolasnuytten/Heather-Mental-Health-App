@@ -13,6 +13,8 @@
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
+    "react-native-calendars": "^1.22.0",
+    "react-native-elements": "^1.0.0",
     "react-native-onboarding-swiper": "^1.0.0",
     "react-native-swiper": "^1.5.14",
     "react-navigation": "^3.0.9"
