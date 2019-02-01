@@ -6,6 +6,8 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import MoodScreen from '../screens/MoodScreen';
 import ReizenScreen from '../screens/ReizenScreen';
+import OefeningScreen from '../screens/OefeningScreen';
+import VoltooidScreen from '../screens/VoltooidScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -36,10 +38,13 @@ MoodStack.navigationOptions = {
 };
 
 const ReizenStack = createStackNavigator({
-  Reizen: ReizenScreen
+  Reizen: ReizenScreen,
+  Oefening: OefeningScreen,
+  Voltooid: VoltooidScreen
 });
 
 ReizenStack.navigationOptions = {
+  tabBarVisible: true,
   tabBarLabel: "Reizen",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon

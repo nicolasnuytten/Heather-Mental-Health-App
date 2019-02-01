@@ -13,8 +13,13 @@ export default class VoltooidScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View>
-          <Button style={styles.selected} title="Voltooid" onPress={() => navigate("Voltooid")} />
+          <Button
+            style={styles.selected}
+            title="Voltooid"
+            onPress={() => navigate("Voltooid")}
+          />
           <Button title="Reizen" onPress={() => navigate("Reizen")} />
+          <Button title="+" onPress={() => navigate("ReisToevoegen")} />
           <View>
             {data.reizen.voltooid.map(reis => (
               <View key={reis.id} style={styles.card}>

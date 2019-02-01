@@ -1,14 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableHighlight, Image, Button } from 'react-native';
-import { createStackNavigator, createAppNavigator } from 'react-navigation';
 import { Svg } from "expo";
-import ProfileScreen from "./ProfileScreen";
-import { white } from 'ansi-colors';
-const { Circle, Rect, G, Path, Mask, } = Svg;
-
-const MainNavigator = createStackNavigator({
-  Profile: { screen: ProfileScreen },
-});
+const { Rect, G, Path, Mask, } = Svg;
 
 export default class Homescreen extends React.Component {
   static navigationOptions = {
