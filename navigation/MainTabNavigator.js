@@ -50,7 +50,7 @@ ReizenStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  MoodStack,
   HomeStack,
+  MoodStack,
   ReizenStack
 });

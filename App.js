@@ -3,9 +3,6 @@ import { Platform, StatusBar, StyleSheet, View, AsyncStorage, Text } from 'react
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import Onboarding from './components/Onboarding';
-import checkIfFirstLaunch from "./utils/OnboardingCheck";
-
-const HAS_LAUNCHED = "hasLaunched";
 
 export default class App extends React.Component {
   state = { firstLaunch: null};

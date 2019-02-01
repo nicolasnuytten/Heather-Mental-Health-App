@@ -2,19 +2,68 @@
   "reizen" : {
     "voltooid": [
       {
+        "id": "01",
         "name": "Goedemorgen",
         "goals": "4",
         "date": "26/01/2019"
       },
       {
+        "id": "02",
         "name": "Avondritueel",
         "goals": "6",
         "date": "24/01/2019"
       },
       {
+        "id": "03",
         "name": "Productiviteit",
         "goals": "3",
         "date": "21/01/2019"
+      }
+    ],
+    "reizen": [
+      {
+        "id": "01",
+        "name": "Ontstressen",
+        "goalsDone": "2",
+        "goalsTotal": "7",
+        "started": "2d"
+      },
+      {
+        "id": "02",
+        "name": "Motivatie boost",
+        "goalsDone": "4",
+        "goalsTotal": "5",
+        "started": "3d"
+      },
+      {
+        "id": "03",
+        "name": "Meditatie",
+        "goalsDone": "5",
+        "goalsTotal": "7",
+        "started": "5d"
+      },
+      {
+        "id": "04",
+        "name": "Focus",
+        "goalsDone": "2",
+        "goalsTotal": "4",
+        "started": "9d"
+      }
+    ],
+    "oefening" : [
+      {
+        "id": "01",
+        "name": "Gefocust ademhalen",
+        "tags": "gezondheid",
+        "time": "5min.",
+        "rate": "1/3"
+      },
+      {
+        "id": "02",
+        "name": "Gefocust ademhalen",
+        "tags": "gezondheid",
+        "time": "5min.",
+        "rate": "1/3"
       }
     ]
   }
