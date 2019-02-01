@@ -6,6 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import MoodScreen from '../screens/MoodScreen';
 import CreateMoodScreen from '../screens/CreateMoodScreen';
+import CreateMoodScreen2 from '../screens/CreateMoodScreen2';
 import ReizenScreen from '../screens/ReizenScreen';
 import OefeningScreen from '../screens/OefeningScreen';
 import VoltooidScreen from '../screens/VoltooidScreen';
@@ -13,6 +14,7 @@ import VoltooidScreen from '../screens/VoltooidScreen';
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
   CreateMood: CreateMoodScreen,
+  CreateMood2: CreateMoodScreen2,
 });
 
 HomeStack.navigationOptions = {
