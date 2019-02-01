@@ -66,5 +66,23 @@
         "rate": "1/3"
       }
     ]
+  },
+  "tags": {
+    "positive": [
+      {
+        "name": "Ontspannen"
+      },
+      {
+        "name": "Geliefd"
+      }
+    ],
+    "negative": [
+      {
+        "name": "Boos"
+      },
+      {
+        "name": "Verdriet"
+      }
+    ]
   }
 }
