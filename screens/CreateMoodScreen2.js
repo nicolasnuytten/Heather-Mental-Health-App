@@ -13,13 +13,13 @@ export default class CreateMood2 extends React.Component {
     header: null,
   };
 
-  handleButtonPos = (e) => {
+  handleButtonPos = () => {
     this.setState({
       tab: "positive"
     });
   };
 
-  handleButtonNeg = (e) => {
+  handleButtonNeg = () => {
     this.setState({
       tab: "negative"
     });
@@ -32,9 +32,7 @@ export default class CreateMood2 extends React.Component {
       <View style={styles.container}>
         <View>
           <Icon name="arrow-back" onPress={() => navigate("CreateMood")} />
-          <TouchableHighlight onPress={() => navigate("Home")}>
-            <Text>Klaar</Text>
-          </TouchableHighlight>
+          <Button title="Klaar" onPress={() => navigate("Home")} />
         </View>
         <View>
           <Text>Hoe was je dag?</Text>
@@ -45,7 +43,7 @@ export default class CreateMood2 extends React.Component {
               step={1}
               minimumValue={0}
               maximumValue={100}
-              value={0}
+              value={50}
             />
           </View>
           <View>
@@ -55,7 +53,7 @@ export default class CreateMood2 extends React.Component {
               step={1}
               minimumValue={0}
               maximumValue={100}
-              value={0}
+              value={50}
             />
           </View>
           <Text>Wat heb je gedaan?</Text>

@@ -6,42 +6,52 @@ import data from "../assets/data/data.json"
 export default class CreateMood extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { tab: "positive" };
+    this.state = { tab: "positive",
+    mood: {
+      slider1: 50,
+    } };
   }
   
   static navigationOptions = {
     header: null,
   };
 
-  handleButtonPos = (e) => {
+  handleButtonPos = () => {
     this.setState({
       tab: "positive"
     });
   };
 
-  handleButtonNeg = (e) => {
+  handleButtonNeg = () => {
     this.setState({
       tab: "negative"
     });
   };
 
+  handleNextButton = () => {
+    const {navigate} = this.props.navigation;
+    console.log(this.state.mood.slider1);
+    console.log(this.state.tab);
+    navigate("CreateMood2");
+  };
+
   render() {
     const { navigate } = this.props.navigation;
-    console.log(this.state.tab);
+    
     return (
       <View style={styles.container}>
         <View>
           <Icon name="arrow-back" onPress={() => navigate("Home")} />
-          <TouchableHighlight onPress={() => navigate("CreateMood2")}>
-            <Text>Volgende</Text>
-          </TouchableHighlight>
+          <Button title="Volgende" onPress={this.handleNextButton} />
         </View>
         <View>
           <Text>Hoe voel je je?</Text>
           {/* https://stackoverflow.com/questions/48089373/display-value-of-slider-with-respect-to-slider-thumb-react-native */}
           <Text>Goed</Text>
           <Text>Slecht</Text>
-          <Slider step={1} minimumValue={0} maximumValue={100} value={0} />
+          <Slider step={1} minimumValue={0} maximumValue={100} value={this.state.mood.slider1} onValueChange={val => this.setState({ mood: {
+            slider1: val
+          } })}/>
           <Button title={"Positief"} onPress={this.handleButtonPos} />
           <Button title={"Negatief"} onPress={this.handleButtonNeg} />
           <View>
