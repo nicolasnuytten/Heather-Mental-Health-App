@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, TouchableHighlight, Button } from 'react-native
 import { Icon } from "react-native-elements";
 import { createStackNavigator, createAppNavigator } from "react-navigation";
 import data from "../assets/data/data.json";
+//import { url } from 'inspector';
 
 export default class ReizenScreen extends React.Component {
   static navigationOptions = {
@@ -14,7 +15,7 @@ export default class ReizenScreen extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        
+
         <Button title="Voltooid" onPress={() => navigate("Voltooid")} />
         <Button title="Reizen" onPress={() => navigate("Reizen")} />
         <Button title="Oefening" onPress={() => navigate("Oefening")} />
@@ -46,6 +47,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   card: {
-    padding: 20
+    margin: 10,
+    padding: 10,
+    backgroundColor: "#D6F1FF",
+    borderRadius: 10
   }
 });
