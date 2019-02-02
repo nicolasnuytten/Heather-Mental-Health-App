@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableHighlight, Image, Button } from 'react-native';
+import { View, StyleSheet, Text, TouchableHighlight, Image, Button, Platform, ProgressBarAndroid, ProgressViewIOS } from 'react-native';
 import data from "../assets/data/data.json";
 
 export default class VoltooidScreen extends React.Component {
@@ -23,11 +23,22 @@ export default class VoltooidScreen extends React.Component {
           <View>
             {data.reizen.voltooid.map(reis => (
               <View key={reis.id} style={styles.card}>
-                <Text>{reis.name}</Text>
-                <Text>
-                  Progressie: {reis.goals}/{reis.goals}
-                </Text>
-                <Text>{reis.date}</Text>
+                <Text style={styles.cardName}>{reis.name}</Text>
+                <View style={styles.cardProgress}>
+                  <Text style={styles.cardProgressTitles}>
+                    Progressie: {reis.goals}/{reis.goals}
+                  </Text>
+                  <Text style={styles.cardProgressTitles}>{reis.date}</Text>
+                </View>
+                <View style={styles.progressBar}>
+                  {
+                    (Platform.OS === 'android')
+                      ?
+                      (<ProgressBarAndroid styleAttr="Horizontal" progress={1} indeterminate={false} />)
+                      :
+                      (<ProgressViewIOS progress={1} />)
+                  }
+                </View>
               </View>
             ))}
           </View>
@@ -48,6 +59,30 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   card: {
-    padding: 20
+    margin: 10,
+    padding: 10,
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "#BDE2F6"
+  },
+  cardName: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#104664",
+    paddingBottom: 10
+  },
+  cardProgress: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  cardProgressTitles: {
+    color: "#86BCDA",
+    fontSize: 16
+  },
+  progressBar: {
+    marginTop: 10,
+    padding: 2,
+    borderRadius: 10,
+    backgroundColor: "#86BCDA"
   }
 });

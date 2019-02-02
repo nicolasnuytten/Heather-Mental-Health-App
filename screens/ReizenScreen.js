@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableHighlight, Button } from 'react-native';
+import { View, StyleSheet, Text, TouchableHighlight, Button, Platform, ProgressBarAndroid, ProgressViewIOS } from 'react-native';
 import { Icon } from "react-native-elements";
 import { createStackNavigator, createAppNavigator } from "react-navigation";
 import data from "../assets/data/data.json";
+import { bold } from 'ansi-colors';
 //import { url } from 'inspector';
 
 export default class ReizenScreen extends React.Component {
@@ -24,11 +25,22 @@ export default class ReizenScreen extends React.Component {
         <View>
           {data.reizen.reizen.map(reis => (
             <View key={reis.id} style={styles.card}>
-              <Text>{reis.name}</Text>
-              <Text>
-                Progressie: {reis.goalsDone}/{reis.goalsTotal}
-              </Text>
-              <Text>{reis.started} geleden gestart</Text>
+              <Text style={styles.cardName}>{reis.name}</Text>
+              <View style={styles.cardProgress}>
+                <Text style={styles.cardProgressTitles}>
+                  Progressie: {reis.goalsDone}/{reis.goalsTotal}
+                </Text>
+                <Text style={styles.cardProgressTitles}>{reis.started} geleden gestart</Text>
+              </View>
+              <View style={styles.progressBar}>
+                {
+                  (Platform.OS === 'android')
+                    ?
+                    (<ProgressBarAndroid styleAttr="Horizontal" progress={.5} indeterminate={false} />)
+                    :
+                    (<ProgressViewIOS progress={.5} />)
+                }
+              </View>
             </View>
           ))}
         </View>
@@ -51,5 +63,25 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "#D6F1FF",
     borderRadius: 10
+  },
+  cardName: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#104664",
+    paddingBottom: 10
+  },
+  cardProgress: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  cardProgressTitles: {
+    color: "#104664",
+    fontSize: 16
+  },
+  progressBar: {
+    marginTop: 10,
+    padding: 2,
+    borderRadius: 10,
+    backgroundColor: "#104664"
   }
 });
