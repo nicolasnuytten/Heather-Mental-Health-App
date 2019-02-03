@@ -1,5 +1,5 @@
 {
-  "reizen" : {
+  "reizen": {
     "voltooid": [
       {
         "id": "01",
@@ -50,20 +50,20 @@
         "started": "9d"
       }
     ],
-    "oefening" : [
+    "oefening": [
       {
         "id": "01",
         "name": "Gefocust ademhalen",
         "tags": "gezondheid",
         "time": "5min.",
-        "rate": "1/3"
+        "rate": "3"
       },
       {
         "id": "02",
         "name": "Gefocust ademhalen",
         "tags": "gezondheid",
         "time": "5min.",
-        "rate": "1/3"
+        "rate": "1"
       }
     ]
   },
