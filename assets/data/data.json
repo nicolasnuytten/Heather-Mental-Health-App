@@ -67,13 +67,34 @@
       }
     ]
   },
-  "tags": {
+  "tags_1": {
     "positive": [
       {
         "name": "Ontspannen"
       },
       {
         "name": "Geliefd"
+      },
+      {
+        "name": "Actief"
+      },
+      {
+        "name": "Inspirerend"
+      },
+      {
+        "name": "Trots"
+      },
+      {
+        "name": "Optimistisch"
+      },
+      {
+        "name": "Productief"
+      },
+      {
+        "name": "Hoopvol"
+      },
+      {
+        "name": "Opgewonden"
       }
     ],
     "negative": [
@@ -82,7 +103,60 @@
       },
       {
         "name": "Verdriet"
+      },
+      {
+        "name": "Moe"
+      },
+      {
+        "name": "Eenzaam"
+      },
+      {
+        "name": "Angst"
+      },
+      {
+        "name": "Teleurgesteld"
+      },
+      {
+        "name": "Stress"
+      },
+      {
+        "name": "Onzeker"
+      },
+      {
+        "name": "Verward"
       }
     ]
-  }
+  },
+  "tags_2": [
+    {
+      "name": "School"
+    },
+    {
+      "name": "Werk"
+    },
+    {
+      "name": "Sport"
+    },
+    {
+      "name": "Feest"
+    },
+    {
+      "name": "Entertainment"
+    },
+    {
+      "name": "Winkelen"
+    },
+    {
+      "name": "Reizen"
+    },
+    {
+      "name": "Ontspanning"
+    },
+    {
+      "name": "Vrienden"
+    },
+    {
+      "name": "Date"
+    }
+  ]
 }

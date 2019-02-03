@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableHighlight, Slider, Button } from 'react-native';
+import { View, StyleSheet, Text, Slider, Button, TouchableHighlight } from 'react-native';
 import { Icon } from "react-native-elements";
 import data from "../assets/data/data.json";
 
 export default class CreateMood2 extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { tab: "positive" };
+    this.state = { tab: "positive"}
   }
 
   static navigationOptions = {
@@ -25,6 +25,9 @@ export default class CreateMood2 extends React.Component {
     });
   };
 
+  handleTag = (e) => {
+    console.log(e);
+  };
 
   render() {
     const { navigate } = this.props.navigation;
@@ -57,26 +60,20 @@ export default class CreateMood2 extends React.Component {
             />
           </View>
           <Text>Wat heb je gedaan?</Text>
-          <Button title={"Positief"} onPress={this.handleButtonPos} />
-          <Button title={"Negatief"} onPress={this.handleButtonNeg} />
           <View>
-            {this.state.tab === "positive"
-              ? data.tags.positive.map(tag => (
+            {
+              data.tags_2.map(tag => (
+                <TouchableHighlight onPress={this.handleTag}>
                   <Text key={tag.name}>{tag.name}</Text>
+                </TouchableHighlight>
                 ))
-              : data.tags.negative.map(tag => (
-                  <Text key={tag.name}>{tag.name}</Text>
-                ))}
+              }
           </View>
         </View>
       </View>
     );
   }
 }
-
-const handleProfile = () => {
-  
-};
 
 const styles = StyleSheet.create({
   container: {
