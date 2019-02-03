@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableHighlight, Image, Button } from 'react-native';
+import { View, ImageBackground, Image, ScrollView, StyleSheet, Text, TouchableHighlight, Button } from 'react-native';
 import { Icon } from "react-native-elements";
 import { createStackNavigator, createAppNavigator } from "react-navigation";
+import data from "../assets/data/data.json";
 
 export default class ProfileScreen extends React.Component {
   static navigationOptions = {
@@ -32,33 +33,40 @@ export default class ProfileScreen extends React.Component {
           </View>
         </View>
       </View>
-      <View>
-        <View style={{ paddingBottom: 40 }}>
-          <Text style={styles.subTitle}>Heather App</Text>
-          <Text style={styles.text}>Heather helpt je zelfbewuster te worden van je emoties door deze dagelijks bij te houden. Doe aan zelf-coaching door reizen op te stellen om deze emoties de baas te worden via talloze motiverende of rustgevende oefeningen.</Text>
-        </View>
-        <View>
-          <Text style={[styles.subTitle, styles.orange]}>Hulpcentrum</Text>
-          <Text style={[styles.text, styles.orange]}>Heb je verdere hulp nodig? Geen zorgen, we got you! Hier zijn enkele geweldige organisaties.</Text>
-        </View>
-        <View>
-          <Text style={styles.orgName}>Awel</Text>
-          <Text style={[styles.text, styles.lichtBlauw]}>Awel ik wil wel een babbel!</Text>
-          <View style={styles.orgContact}>
-            <Image source={require("./../assets/images/phone_icon.png")} />
-            <Text style={styles.text}>tel</Text>
+
+      <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 60 }} >
+        <ScrollView style={styles.infoContainer}>
+          <View style={{ paddingBottom: 20 }}>
+            <Text style={styles.subTitle}>Heather App</Text>
+            <Text style={styles.text}>Heather helpt je zelfbewuster te worden van je emoties door deze dagelijks bij te houden. Doe aan zelf-coaching door reizen op te stellen om deze emoties de baas te worden via talloze motiverende of rustgevende oefeningen.</Text>
           </View>
-          <View style={styles.orgContact}>
-            <Image source={require("./../assets/images/chat_icon.png")} />
-            <Text style={styles.text}>chat</Text>
+          <View style={{ paddingBottom: 20 }}>
+            <Text style={[styles.subTitle, styles.orange]}>Hulpcentrum</Text>
+            <Text style={[styles.text, styles.orange]}>Heb je verdere hulp nodig? Geen zorgen, we got you! Hier zijn enkele geweldige organisaties.</Text>
           </View>
-          <View style={styles.orgContact}>
-            <Image source={require("./../assets/images/site_icon.png")} />
-            <Text style={styles.text}>site</Text>
-          </View>
-        </View>
-        <Text style={styles.text}>Privacybeleid &amp; gebruikerovereenkomsten</Text>
-      </View>
+
+          {data.organisaties.map(item => (
+            <View key={item.name} style={styles.card}>
+              <Text style={styles.orgName}>{item.name}</Text>
+              <Text style={[styles.text, styles.lichtBlauw, styles.orgInfo]}>{item.info}</Text>
+              <View style={styles.orgContact}>
+                <Image style={{ marginRight: 10 }} source={require("./../assets/images/phone_icon.png")} />
+                <Text style={styles.text}>{item.phone}</Text>
+              </View>
+              <View style={styles.orgContact}>
+                <Image style={{ marginRight: 10 }} source={require("./../assets/images/chat_icon.png")} />
+                <Text style={styles.text}>{item.chat}</Text>
+              </View>
+              <View style={styles.orgContact}>
+                <Image style={{ marginRight: 6 }} source={require("./../assets/images/site_icon.png")} />
+                <Text style={styles.text}>{item.site}</Text>
+              </View>
+            </View>
+          ))}
+
+          <Text style={styles.text}>Privacybeleid &amp; gebruikerovereenkomsten</Text>
+        </ScrollView>
+      </ImageBackground>
 
     </View>;
   }
@@ -72,7 +80,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#BDE2F6",
-    padding: 20
+    paddingTop: 20
   },
   header: {
     flexDirection: 'row',
@@ -88,7 +96,8 @@ const styles = StyleSheet.create({
   },
   statsContainer: {
     paddingTop: 10,
-    paddingBottom: 40
+    paddingLeft: 20,
+    paddingRight: 20
   },
   stats: {
     flexDirection: 'row',
@@ -121,14 +130,30 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16
   },
+  infoContainer: {
+    paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 20,
+    height: '100%'
+  },
+  card: {
+    paddingBottom: 20,
+    marginBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F2994A'
+  },
   orgName: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#104664'
   },
+  orgInfo: {
+    paddingBottom: 10
+  },
   orgContact: {
     flexDirection: 'row',
-    alignContent: 'center'
+    alignItems: 'center'
   },
   orgChat: {
 
