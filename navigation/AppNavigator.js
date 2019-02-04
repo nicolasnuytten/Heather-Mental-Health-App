@@ -8,6 +8,7 @@ import CreateMoodScreen2 from "../screens/CreateMoodScreen2";
 import VoltooidScreen from "../screens/VoltooidScreen";
 import OefeningScreen from "../screens/OefeningScreen";
 import ReizenScreen from "../screens/ReizenScreen";
+import OefeningDetailScreen from "../screens/OefeningDetailScreen";
 
 export default createAppContainer(
   createSwitchNavigator({
@@ -20,5 +21,6 @@ export default createAppContainer(
     Voltooid: VoltooidScreen,
     Oefening: OefeningScreen,
     Reizen: ReizenScreen,
+    OefeningDetail: OefeningDetailScreen
   })
 );

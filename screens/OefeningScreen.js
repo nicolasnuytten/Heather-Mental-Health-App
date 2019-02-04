@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ImageBackground, ScrollView, Image, StyleSheet, Text, TextInput, Button } from "react-native";
+import { View, ImageBackground, ScrollView, Image, StyleSheet, Text, TextInput, Button, TouchableHighlight } from "react-native";
 import data from "../assets/data/data.json";
 import { bold } from 'ansi-colors';
 
@@ -25,17 +25,19 @@ export default class OefeningScreen extends React.Component {
           <ScrollView>
             <View style={styles.cards}>
               {data.reizen.oefening.map(item => (
-                <View key={item.id} style={styles.card}>
-                  <View>
-                    <Text style={styles.cardName}>{item.name}</Text>
-                    <Text style={styles.cardTags}>{item.tags}</Text>
+                <TouchableHighlight style={{ width: '50%' }} key={item.id} onPress={() => navigate("OefeningDetail")}>
+                  <View style={styles.card}>
+                    <View>
+                      <Text style={styles.cardName}>{item.name}</Text>
+                      <Text style={styles.cardTags}>{item.tags}</Text>
+                    </View>
+                    <View style={styles.cardBottom}>
+                      <Text style={[styles.cardTags, styles.cardTime]}>{item.time}</Text>
+                      <Image source={require("./../assets/images/stars_1.png")} />
+                      {/* <Text>{item.rate}</Text> */}
+                    </View>
                   </View>
-                  <View style={styles.cardBottom}>
-                    <Text style={[styles.cardTags, styles.cardTime]}>{item.time}</Text>
-                    <Image source={require("./../assets/images/stars_1.png")} />
-                    {/* <Text>{item.rate}</Text> */}
-                  </View>
-                </View>
+                </TouchableHighlight>
               ))}
             </View>
           </ScrollView>
@@ -65,7 +67,6 @@ const styles = StyleSheet.create({
   cards: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "center",
     paddingLeft: 10,
     paddingRight: 10,
     paddingBottom: 160,
@@ -75,7 +76,6 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     backgroundColor: "#FFF3C1",
-    width: '44%',
     height: 132,
     justifyContent: "space-between",
     borderRadius: 10
