@@ -4,6 +4,15 @@ import { Icon } from "react-native-elements";
 import data from "../assets/data/data.json"
 const tagsList = [];
 
+import firebase from "firebase";
+require("firebase/firestore");
+firebase.initializeApp({
+  apiKey: "AIzaSyBUM4W5Y6xoNfF1DhT5hayi-thUAmmLmZU",
+  authDomain: "heather-app.firebaseapp.com",
+  projectId: "heather-app"
+});
+var db = firebase.firestore();
+
 export default class CreateMood extends React.Component {
   constructor(props) {
     super(props);
@@ -46,6 +55,24 @@ export default class CreateMood extends React.Component {
     navigate("CreateMood2", {slider1: this.state.mood.slider1});
   };
 
+  handleData = () => {
+    const { navigate } = this.props.navigation;
+    console.log("Adding 2 DB");
+    db.collection("users").add({
+      date: "03/01",
+      slider1: 32,
+      tags1: ["Moe", "Boos"],
+    })
+      .then(function (docRef) {
+        console.log("Document written with ID: ", docRef.id);
+        navigate("CreateMood2", { id: docRef.id });
+      })
+      .catch(function (error) {
+        console.error("Error adding document: ", error);
+      });
+    
+  };
+
   render() {
     const { navigate } = this.props.navigation;
     
@@ -53,7 +80,7 @@ export default class CreateMood extends React.Component {
       <View style={styles.container}>
         <View>
           <Icon name="arrow-back" onPress={() => navigate("Home")} />
-          <Button title="Volgende" onPress={this.handleNextButton} />
+          <Button title="Volgende" onPress={this.handleData} />
         </View>
         <View>
           <Text>Hoe voel je je?</Text>

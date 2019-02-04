@@ -3,6 +3,15 @@ import { View, StyleSheet, Text, Slider, Button, TouchableHighlight } from 'reac
 import { Icon } from "react-native-elements";
 import data from "../assets/data/data.json";
 
+import firebase from "firebase";
+require("firebase/firestore");
+// firebase.initializeApp({
+//   apiKey: "AIzaSyBUM4W5Y6xoNfF1DhT5hayi-thUAmmLmZU",
+//   authDomain: "heather-app.firebaseapp.com",
+//   projectId: "heather-app"
+// });
+var db = firebase.firestore();
+
 export default class CreateMood2 extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +20,7 @@ export default class CreateMood2 extends React.Component {
 
   static navigationOptions = {
     header: null,
+
   };
 
   handleButtonPos = () => {
@@ -25,8 +35,27 @@ export default class CreateMood2 extends React.Component {
     });
   };
 
-  handleTag = (e) => {
-    console.log(e);
+  handleTag = (tag) => {
+    console.log(tag);
+  };
+
+  handleData = () => {
+    const { navigate} = this.props.navigation;
+    console.log(this.props.navigation.state.params.id);
+    // console.log(id);
+    console.log("Adding 2 DB");
+    // db.collection("users").add({
+    //   slider2: 48,
+    //   slider3: 79,
+    //   tags2: ["Werk", "Sport"]
+    // })
+    //   .then(function (docRef) {
+    //     console.log("Document written with ID: ", docRef.id);
+    //   })
+    //   .catch(function (error) {
+    //     console.error("Error adding document: ", error);
+    //   });
+    navigate("Home");
   };
 
   render() {
@@ -35,7 +64,7 @@ export default class CreateMood2 extends React.Component {
       <View style={styles.container}>
         <View>
           <Icon name="arrow-back" onPress={() => navigate("CreateMood")} />
-          <Button title="Klaar" onPress={() => navigate("Home")} />
+          <Button title="Klaar" onPress={this.handleData} />
         </View>
         <View>
           <Text>Hoe was je dag?</Text>
@@ -63,8 +92,8 @@ export default class CreateMood2 extends React.Component {
           <View>
             {
               data.tags_2.map(tag => (
-                <TouchableHighlight onPress={this.handleTag}>
-                  <Text key={tag.name}>{tag.name}</Text>
+                <TouchableHighlight key={tag.name} onPress={() => this.handleTag(tag.name)}>
+                  <Text>{tag.name}</Text>
                 </TouchableHighlight>
                 ))
               }
