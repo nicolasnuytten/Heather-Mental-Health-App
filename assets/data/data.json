@@ -1,5 +1,5 @@
 {
-  "reizen" : {
+  "reizen": {
     "voltooid": [
       {
         "id": "01",
@@ -50,20 +50,76 @@
         "started": "9d"
       }
     ],
-    "oefening" : [
+    "oefening": [
       {
         "id": "01",
         "name": "Gefocust ademhalen",
         "tags": "gezondheid",
         "time": "5min.",
-        "rate": "1/3"
+        "rate": "3"
       },
       {
         "id": "02",
         "name": "Gefocust ademhalen",
         "tags": "gezondheid",
         "time": "5min.",
-        "rate": "1/3"
+        "rate": "1"
+      },
+      {
+        "id": "03",
+        "name": "Gefocust ademhalen",
+        "tags": "gezondheid",
+        "time": "5min.",
+        "rate": "3"
+      },
+      {
+        "id": "04",
+        "name": "Gefocust ademhalen",
+        "tags": "gezondheid",
+        "time": "5min.",
+        "rate": "1"
+      },
+      {
+        "id": "05",
+        "name": "Gefocust ademhalen",
+        "tags": "gezondheid",
+        "time": "5min.",
+        "rate": "3"
+      },
+      {
+        "id": "06",
+        "name": "Gefocust ademhalen",
+        "tags": "gezondheid",
+        "time": "5min.",
+        "rate": "1"
+      },
+      {
+        "id": "07",
+        "name": "Gefocust ademhalen",
+        "tags": "gezondheid",
+        "time": "5min.",
+        "rate": "3"
+      },
+      {
+        "id": "08",
+        "name": "Gefocust ademhalen",
+        "tags": "gezondheid",
+        "time": "5min.",
+        "rate": "1"
+      },
+      {
+        "id": "09",
+        "name": "Gefocust ademhalen",
+        "tags": "gezondheid",
+        "time": "5min.",
+        "rate": "3"
+      },
+      {
+        "id": "10",
+        "name": "Gefocust ademhalen",
+        "tags": "gezondheid",
+        "time": "5min.",
+        "rate": "1"
       }
     ]
   },
@@ -157,6 +213,52 @@
     },
     {
       "name": "Date"
+    }
+  ],
+  "organisaties": [
+    {
+      "name": "Awel",
+      "info": "Awel ik wil wel een babbel!",
+      "phone": "102",
+      "chat": "www.awel.be/chat",
+      "site": "www.awel.be"
+    },
+    {
+      "name": "Zelfmoordlijn",
+      "info": "Dringend nood aan een gesprek?",
+      "phone": "1813",
+      "chat": "www.zelfmoordlijn1813.be/chat-met-zelfmoordlijn-1813",
+      "site": "www.zelfmoordlijn1813.be"
+    },
+    {
+      "name": "Jongeren Advies Centrum (JAC)",
+      "info": "Voor jongeren met een vraag of probleem",
+      "phone": "www.caw.be/jac/contacteer-ons/kom-langs/",
+      "chat": "www.jac.be/chat",
+      "site": "www.jac.be"
+    },
+    {
+      "name": "Allesoverseks.be",
+      "info": "Info & antwoorden over seks, SOA's, relaties, ...",
+      "site": "www.allesoverseks.be"
+    },
+    {
+      "name": "De Druglijn",
+      "info": "Alles over drank, drugs, gamen en gokken",
+      "phone": "078 15 10 20",
+      "chat": "www.druglijn.be/stel-je-vraag/chat",
+      "site": "www.druglijn.be"
+    },
+    {
+      "name": "Wat Wat",
+      "info": "Advies over school, relaties, maatschappij, ...",
+      "site": "www.watwat.be"
+    },
+    {
+      "name": "Teleblok",
+      "info": "Omgaan met studeren, examenstress, ...",
+      "chat": "www.teleblok.be/chat/contact_opnemen_met_teleblok",
+      "site": "www.teleblok.be"
     }
   ]
 }

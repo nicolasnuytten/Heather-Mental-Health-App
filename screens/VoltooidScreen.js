@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableHighlight, Image, Button, Platform, ProgressBarAndroid, ProgressViewIOS } from 'react-native';
+import { View, ScrollView, ImageBackground, StyleSheet, Text, TouchableHighlight, Image, Button, Platform, ProgressBarAndroid, ProgressViewIOS } from 'react-native';
 import data from "../assets/data/data.json";
 
 export default class VoltooidScreen extends React.Component {
@@ -20,28 +20,32 @@ export default class VoltooidScreen extends React.Component {
           />
           <Button title="Reizen" onPress={() => navigate("Reizen")} />
           <Button title="+" onPress={() => navigate("ReisToevoegen")} />
-          <View>
-            {data.reizen.voltooid.map(reis => (
-              <View key={reis.id} style={styles.card}>
-                <Text style={styles.cardName}>{reis.name}</Text>
-                <View style={styles.cardProgress}>
-                  <Text style={styles.cardProgressTitles}>
-                    Progressie: {reis.goals}/{reis.goals}
-                  </Text>
-                  <Text style={styles.cardProgressTitles}>{reis.date}</Text>
-                </View>
-                <View style={styles.progressBar}>
-                  {
-                    (Platform.OS === 'android')
-                      ?
-                      (<ProgressBarAndroid styleAttr="Horizontal" progress={1} indeterminate={false} />)
-                      :
-                      (<ProgressViewIOS progress={1} />)
-                  }
-                </View>
+          <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 60 }} >
+            <ScrollView>
+              <View style={styles.cards}>
+                {data.reizen.voltooid.map(reis => (
+                  <View key={reis.id} style={styles.card}>
+                    <Text style={styles.cardName}>{reis.name}</Text>
+                    <View style={styles.cardProgress}>
+                      <Text style={styles.cardProgressTitles}>
+                        Progressie: {reis.goals}/{reis.goals}
+                      </Text>
+                      <Text style={styles.cardProgressTitles}>{reis.date}</Text>
+                    </View>
+                    <View style={styles.progressBar}>
+                      {
+                        (Platform.OS === 'android')
+                          ?
+                          (<ProgressBarAndroid styleAttr="Horizontal" progress={1} indeterminate={false} />)
+                          :
+                          (<ProgressViewIOS progress={1} />)
+                      }
+                    </View>
+                  </View>
+                ))}
               </View>
-            ))}
-          </View>
+            </ScrollView>
+          </ImageBackground>
         </View>
       </View>
     );
@@ -57,6 +61,10 @@ const styles = StyleSheet.create({
   },
   selected: {
     fontWeight: "bold"
+  },
+  cards: {
+    paddingBottom: 240,
+    height: '100%'
   },
   card: {
     margin: 10,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableHighlight, Button, Platform, ProgressBarAndroid, ProgressViewIOS } from 'react-native';
+import { ImageBackground, View, ScrollView, StyleSheet, Text, TouchableHighlight, Button, Platform, ProgressBarAndroid, ProgressViewIOS } from 'react-native';
 import { Icon } from "react-native-elements";
 import { createStackNavigator, createAppNavigator } from "react-navigation";
 import data from "../assets/data/data.json";
@@ -22,28 +22,32 @@ export default class ReizenScreen extends React.Component {
         <Button title="Oefening" onPress={() => navigate("Oefening")} />
         <Button title="+" onPress={() => navigate("ReisToevoegen")} />
 
-        <View>
-          {data.reizen.reizen.map(reis => (
-            <View key={reis.id} style={styles.card}>
-              <Text style={styles.cardName}>{reis.name}</Text>
-              <View style={styles.cardProgress}>
-                <Text style={styles.cardProgressTitles}>
-                  Progressie: {reis.goalsDone}/{reis.goalsTotal}
-                </Text>
-                <Text style={styles.cardProgressTitles}>{reis.started} geleden gestart</Text>
-              </View>
-              <View style={styles.progressBar}>
-                {
-                  (Platform.OS === 'android')
-                    ?
-                    (<ProgressBarAndroid styleAttr="Horizontal" progress={.5} indeterminate={false} />)
-                    :
-                    (<ProgressViewIOS progress={.5} />)
-                }
-              </View>
+        <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 60 }} >
+          <ScrollView>
+            <View style={styles.cards}>
+              {data.reizen.reizen.map(reis => (
+                <View key={reis.id} style={styles.card}>
+                  <Text style={styles.cardName}>{reis.name}</Text>
+                  <View style={styles.cardProgress}>
+                    <Text style={styles.cardProgressTitles}>
+                      Progressie: {reis.goalsDone}/{reis.goalsTotal}
+                    </Text>
+                    <Text style={styles.cardProgressTitles}>{reis.started} geleden gestart</Text>
+                  </View>
+                  <View style={styles.progressBar}>
+                    {
+                      (Platform.OS === 'android')
+                        ?
+                        (<ProgressBarAndroid styleAttr="Horizontal" progress={.5} indeterminate={false} />)
+                        :
+                        (<ProgressViewIOS progress={.5} />)
+                    }
+                  </View>
+                </View>
+              ))}
             </View>
-          ))}
-        </View>
+          </ScrollView>
+        </ImageBackground>
       </View>
     );
   }
@@ -53,10 +57,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#BDE2F6",
-    paddingTop: 20,
+    paddingTop: 20
   },
   selected: {
     fontWeight: "bold"
+  },
+  cards: {
+    paddingBottom: 160,
+    height: '100%'
   },
   card: {
     margin: 10,
