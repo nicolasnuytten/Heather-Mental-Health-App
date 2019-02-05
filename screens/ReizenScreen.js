@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, View, ScrollView, StyleSheet, Text, TouchableHighlight, Button, Platform, ProgressBarAndroid, ProgressViewIOS } from 'react-native';
+import { ImageBackground, View, ScrollView, StyleSheet, Text, TouchableHighlight, Button, Platform, ProgressBarAndroid, ProgressViewIOS, Image } from 'react-native';
 import { Icon } from "react-native-elements";
 import { createStackNavigator, createAppNavigator } from "react-navigation";
 import data from "../assets/data/data.json";
@@ -16,11 +16,14 @@ export default class ReizenScreen extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-
-        <Button title="Voltooid" onPress={() => navigate("Voltooid")} />
-        <Button title="Reizen" onPress={() => navigate("Reizen")} />
-        <Button title="Oefening" onPress={() => navigate("Oefening")} />
-        <Button title="+" onPress={() => navigate("ReisToevoegen")} />
+        <View style={styles.navHeader}>
+          <Button title="Voltooid" onPress={() => navigate("Voltooid")} />
+          <Button title="Reizen" onPress={() => navigate("Reizen")} />
+          <Button title="Oefening" onPress={() => navigate("Oefening")} />
+        </View>
+        <TouchableHighlight style={styles.newButton} onPress={() => navigate("ReisToevoegen")} >
+          <Image source={require("./../assets/images/new_button.png")} />
+        </TouchableHighlight>
 
         <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 60 }} >
           <ScrollView>
@@ -61,6 +64,14 @@ const styles = StyleSheet.create({
   },
   selected: {
     fontWeight: "bold"
+  },
+  navHeader: {
+    flexDirection: "row",
+    justifyContent: "space-around"
+  },
+  newButton: {
+    alignSelf: "center",
+    paddingTop: 10
   },
   cards: {
     paddingBottom: 160,

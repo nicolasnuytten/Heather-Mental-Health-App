@@ -82,9 +82,11 @@ const styles = StyleSheet.create({
   },
   wolkContainer: {
     //flex: 2
+    height: "50%"
   },
   reizenContainer: {
     //flex: 2
+    height: "50%"
   },
   donkerBlauw: {
     color: '#104664'

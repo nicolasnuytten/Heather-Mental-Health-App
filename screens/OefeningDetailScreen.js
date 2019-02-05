@@ -4,9 +4,10 @@ import { Icon } from "react-native-elements";
 import { createStackNavigator, createAppNavigator } from "react-navigation";
 import data from "../assets/data/data.json";
 
-export default class OefeningScreen extends React.Component {
+export default class OefeningDetailScreen extends React.Component {
     static navigationOptions = {
         header: null,
+        tabBarVisible: false,
     };
 
     render() {

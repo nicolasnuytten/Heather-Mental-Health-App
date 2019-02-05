@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, ImageBackground, ScrollView, Image, StyleSheet, Text, TextInput, Button, TouchableHighlight } from "react-native";
+import { View, ImageBackground, ScrollView, FlatList, Image, StyleSheet, Text, TextInput, Button, TouchableHighlight } from "react-native";
+import { List, ListItem, SearchBar } from 'react-native-elements';
 import data from "../assets/data/data.json";
 import { bold } from 'ansi-colors';
 
@@ -12,7 +13,8 @@ export default class OefeningScreen extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <View>
+        <View style={styles.navHeader}>
+          <Button title="Voltooid" onPress={() => navigate("Voltooid")} />
           <Button title="Reizen" onPress={() => navigate("Reizen")} />
           <Button title="Oefening" onPress={() => navigate("Oefening")} />
         </View>
@@ -51,10 +53,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#BDE2F6",
-    paddingTop: 10
+    paddingTop: 20
   },
   selected: {
     fontWeight: "bold"
+  },
+  navHeader: {
+    flexDirection: "row",
+    justifyContent: "space-around"
   },
   textInput: {
     backgroundColor: "#86BCDA",
