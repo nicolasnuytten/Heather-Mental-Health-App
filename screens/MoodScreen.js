@@ -8,16 +8,27 @@ export default class Moodscreen extends React.Component {
   };
 
   render() {
+    const today = new Date();
+    let y = today.getFullYear();
+    let m = today.getMonth() +1;
+    let d = today.getDate();
+    if (d < 10) {
+      d = '0' + d;
+    }
+    if (m < 10) {
+      m = '0' + m;
+    }
+    // console.log(`${y}-${m}-${d}`);
     return <View style={styles.container}>
         <View style={styles.mood}>
           <Text>Wolkje</Text>
         </View>
         <Calendar style={styles.calendar}
         // Collection of dates that have to be marked. Default = {}
-        maxDate={'2019-01-31'}
+        maxDate={`${y}-${m}-${d}`}
         onDayPress={(day) => { console.log('selected day', day) }}
         markedDates={{
-          '2019-01-08': { marked: true, dotColor: 'orange', selected: true},
+          '2019-01-08': { marked: true, dotColor: 'orange'},
           '2019-01-09': { marked: true, dotColor: 'orange'},
           '2019-01-10': { marked: true, dotColor: 'orange'},
           '2019-01-11': { marked: true, dotColor: 'green'},

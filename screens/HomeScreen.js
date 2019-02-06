@@ -2,11 +2,71 @@ import React from 'react';
 import { View, StyleSheet, Text, TouchableHighlight, Image, Button } from 'react-native';
 import { Svg } from "expo";
 const { Rect, G, Path, Mask, } = Svg;
+import EmptyState from '../components/EmptyState';
+
+import firebase from "firebase";
+require("firebase/firestore");
+var config = {
+  apiKey: "AIzaSyBUM4W5Y6xoNfF1DhT5hayi-thUAmmLmZU",
+  authDomain: "heather-app.firebaseapp.com",
+  databaseURL: "https://heather-app.firebaseio.com",
+  projectId: "heather-app",
+  storageBucket: "heather-app.appspot.com",
+  messagingSenderId: "868139238502"
+};
+
+firebase.initializeApp(config);
+let db = firebase.firestore();
+let uid;
+
+firebase.auth().signInAnonymously().catch(function (error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  console.log(errorCode, errorMessage);
+
+});
+
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    // User is signed in.
+    var isAnonymous = user.isAnonymous;
+    uid = user.uid;
+    console.log("logged in", uid);
+
+    const today = new Date();
+    let d = today.getDate();
+    let m = today.getMonth() + 1;
+    if (d < 10) {
+      d = '0' + d;
+    }
+    if (m < 10) {
+      m = '0' + m;
+    }
+    const data = db.collection(uid).where("date", "==", `${d}/${m}`).limit(1);
+    
+  } else {
+    // User is signed out.
+    // ...
+    console.log("logged out");
+  }
+  // ...
+});
+
+let wolkje = false;
+
+
 
 export default class Homescreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+
+  handleCheckMood = () => {
+
+
+  };
+
 
   render() {
     const { navigate } = this.props.navigation;
@@ -24,10 +84,12 @@ export default class Homescreen extends React.Component {
             <Image source={require("./../assets/images/profile_icon.png")} />
           </TouchableHighlight>
         </View>
+        {/* {wolkje ? <Text>het wolkje komt hier</Text> : <EmptyState q={"Hoe voel je je vandaag?"} title={"Vul in"} nav={"CreateMood"} uid={uid}/> } */}
         <View style={styles.wolkContainer}>
           <Text style={[styles.text, styles.donkerBlauw]}>Hoe voel je je vandaag?</Text>
-          <Button style={styles.button} title="Vul in" onPress={() => navigate("CreateMood")} />
+          <Button style={styles.button} title={"Vul in"} onPress={() => navigate("CreateMood", { uid })} />
         </View>
+        {/* {reizen ? <Text>Jouw reizen komen hier</Text> : <EmptyState /> } */}
         <View style={styles.reizenContainer}>
           <Text style={styles.reizenTitle}>Mijn reizen</Text>
           <Text style={[styles.text, styles.donkerBlauw]}>Je hebt nog geen reizen gemaakt, eens proberen?</Text>

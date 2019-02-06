@@ -5,17 +5,18 @@ import data from "../assets/data/data.json";
 
 import firebase from "firebase";
 require("firebase/firestore");
-// firebase.initializeApp({
-//   apiKey: "AIzaSyBUM4W5Y6xoNfF1DhT5hayi-thUAmmLmZU",
-//   authDomain: "heather-app.firebaseapp.com",
-//   projectId: "heather-app"
-// });
-var db = firebase.firestore();
+let db = firebase.firestore();
+
+let tagsList = [];
 
 export default class CreateMood2 extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { tab: "positive"}
+    this.state = {
+      slider2: 50,
+      slider3: 50,
+      tags: [] 
+    }
   }
 
   static navigationOptions = {
@@ -36,25 +37,24 @@ export default class CreateMood2 extends React.Component {
   };
 
   handleTag = (tag) => {
-    console.log(tag);
+    tagsList.push(tag);
+    this.setState({
+      tags: tagsList
+    });
   };
 
   handleData = () => {
     const { navigate} = this.props.navigation;
-    console.log(this.props.navigation.state.params.id);
-    // console.log(id);
+    const uid = this.props.navigation.state.params.uid;
+    const id = this.props.navigation.state.params.id;
+    db.collection(uid).doc(id).update({
+      slider2: this.state.slider2,
+      slider3: this.state.slider3,
+      tags2: tagsList
+    });
+    
+    tagsList = [];
     console.log("Adding 2 DB");
-    // db.collection("users").add({
-    //   slider2: 48,
-    //   slider3: 79,
-    //   tags2: ["Werk", "Sport"]
-    // })
-    //   .then(function (docRef) {
-    //     console.log("Document written with ID: ", docRef.id);
-    //   })
-    //   .catch(function (error) {
-    //     console.error("Error adding document: ", error);
-    //   });
     navigate("Home");
   };
 
@@ -75,7 +75,12 @@ export default class CreateMood2 extends React.Component {
               step={1}
               minimumValue={0}
               maximumValue={100}
-              value={50}
+              value={this.state.slider2}
+              onValueChange={val =>
+                this.setState({
+                  slider2: val
+                })
+              }
             />
           </View>
           <View>
@@ -85,18 +90,24 @@ export default class CreateMood2 extends React.Component {
               step={1}
               minimumValue={0}
               maximumValue={100}
-              value={50}
+              value={this.state.slider3}
+              onValueChange={val =>
+                this.setState({
+                  slider3: val
+                })
+              }
             />
           </View>
           <Text>Wat heb je gedaan?</Text>
           <View>
-            {
-              data.tags_2.map(tag => (
-                <TouchableHighlight key={tag.name} onPress={() => this.handleTag(tag.name)}>
-                  <Text>{tag.name}</Text>
-                </TouchableHighlight>
-                ))
-              }
+            {data.tags_2.map(tag => (
+              <TouchableHighlight
+                key={tag.name}
+                onPress={() => this.handleTag(tag.name)}
+              >
+                <Text>{tag.name}</Text>
+              </TouchableHighlight>
+            ))}
           </View>
         </View>
       </View>

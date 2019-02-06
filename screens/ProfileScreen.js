@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, ImageBackground, Image, ScrollView, StyleSheet, Text, TouchableHighlight, Button } from 'react-native';
 import { Icon } from "react-native-elements";
-import { createStackNavigator, createAppNavigator } from "react-navigation";
 import data from "../assets/data/data.json";
 
 export default class ProfileScreen extends React.Component {

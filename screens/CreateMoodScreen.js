@@ -2,24 +2,17 @@ import React from 'react';
 import { View, StyleSheet, Text, TouchableHighlight, Button, Slider } from 'react-native';
 import { Icon } from "react-native-elements";
 import data from "../assets/data/data.json"
-const tagsList = [];
+let tagsList = [];
 
 import firebase from "firebase";
 require("firebase/firestore");
-firebase.initializeApp({
-  apiKey: "AIzaSyBUM4W5Y6xoNfF1DhT5hayi-thUAmmLmZU",
-  authDomain: "heather-app.firebaseapp.com",
-  projectId: "heather-app"
-});
-var db = firebase.firestore();
+let db = firebase.firestore();
 
 export default class CreateMood extends React.Component {
   constructor(props) {
     super(props);
     this.state = { tab: "positive",
-    mood: {
-      slider1: 50,
-    },
+    slider1: 50,
     tags: [] };
   }
   
@@ -40,36 +33,44 @@ export default class CreateMood extends React.Component {
   };
 
   handleTag = (tag) => {
-    // console.log(tag);
     tagsList.push(tag);
-    console.log(tagsList);
     this.setState({
       tags: tagsList
     })
   };
 
-  handleNextButton = () => {
-    const {navigate} = this.props.navigation;
-    console.log(this.state.mood.slider1);
-    console.log(this.state.tab);
-    navigate("CreateMood2", {slider1: this.state.mood.slider1});
-  };
-
   handleData = () => {
     const { navigate } = this.props.navigation;
+    const uid = this.props.navigation.state.params.uid;
+    
+    const today = new Date();
+    let d = today.getDate();
+    let m = today.getMonth() +1;
+    if (d < 10) {
+      d = '0' + d;
+    }
+    if (m < 10) {
+      m = '0' + m;
+    }
+
+    console.log(this.state.slider1);
     console.log("Adding 2 DB");
-    db.collection("users").add({
-      date: "03/01",
-      slider1: 32,
-      tags1: ["Moe", "Boos"],
-    })
-      .then(function (docRef) {
-        console.log("Document written with ID: ", docRef.id);
-        navigate("CreateMood2", { id: docRef.id });
+    db.collection(uid)
+      .add({
+        uid: `${uid}`,
+        date: `${d}/${m}`,
+        slider1: this.state.slider1,
+        tags1: tagsList
       })
-      .catch(function (error) {
+      .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+        navigate("CreateMood2", { uid: uid, id: docRef.id });
+      })
+      .catch(function(error) {
         console.error("Error adding document: ", error);
       });
+
+      tagsList = [];
     
   };
 
@@ -91,12 +92,10 @@ export default class CreateMood extends React.Component {
             step={1}
             minimumValue={0}
             maximumValue={100}
-            value={this.state.mood.slider1}
+            value={this.state.slider1}
             onValueChange={val =>
               this.setState({
-                mood: {
-                  slider1: val
-                }
+                slider1: val
               })
             }
           />
