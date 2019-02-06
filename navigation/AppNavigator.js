@@ -10,6 +10,7 @@ import OefeningScreen from "../screens/OefeningScreen";
 import ReizenScreen from "../screens/ReizenScreen";
 import OefeningDetailScreen from "../screens/OefeningDetailScreen";
 import ReisToevoegenScreen from "../screens/ReisToevoegenScreen";
+import ReisToevoegenScreen2 from "../screens/ReisToevoegenScreen2";
 
 export default createAppContainer(
   createSwitchNavigator({
@@ -23,6 +24,7 @@ export default createAppContainer(
     Oefening: OefeningScreen,
     Reizen: ReizenScreen,
     OefeningDetail: OefeningDetailScreen,
-    ReisToevoegen: ReisToevoegenScreen
+    ReisToevoegen: ReisToevoegenScreen,
+    ReisToevoegen2: ReisToevoegenScreen2
   })
 );

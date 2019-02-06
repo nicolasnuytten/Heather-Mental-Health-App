@@ -12,6 +12,7 @@ import OefeningScreen from '../screens/OefeningScreen';
 import VoltooidScreen from '../screens/VoltooidScreen';
 import OefeningDetailScreen from '../screens/OefeningDetailScreen';
 import ReisToevoegenScreen from '../screens/ReisToevoegenScreen';
+import ReisToevoegenScreen2 from '../screens/ReisToevoegenScreen2';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -48,7 +49,8 @@ const ReizenStack = createStackNavigator({
   Oefening: OefeningScreen,
   Voltooid: VoltooidScreen,
   OefeningDetail: OefeningDetailScreen,
-  ReisToevoegen: ReisToevoegenScreen
+  ReisToevoegen: ReisToevoegenScreen,
+  ReisToevoegen2: ReisToevoegenScreen2
 });
 
 ReizenStack.navigationOptions = {

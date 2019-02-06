@@ -13,7 +13,8 @@ export default class ReisToevoegenScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selected: []
+            selected: [],
+            active: "none"
         };
     }
 
@@ -23,16 +24,24 @@ export default class ReisToevoegenScreen extends React.Component {
 
     handleSelect = (item) => {
         console.log(item);
-        selectedList.push(item);
+        if (selectedList.includes(item)) {
+            index = selectedList.indexOf(item);
+            selectedList.splice(index, 1);
+            //this.setState({ active: "none" });
+        } else {
+            selectedList.push(item);
+            //this.setState({ active: "" });
+        }
+
         console.log(selectedList);
         this.setState({
             selected: selectedList
         })
     };
 
-    handleData = () => {
+    // handleData = () => {
 
-    };
+    // };
 
     render() {
         const { navigate } = this.props.navigation;
@@ -41,7 +50,7 @@ export default class ReisToevoegenScreen extends React.Component {
                 <Text style={styles.title}>Nieuwe reis</Text>
                 <View style={styles.navHeader}>
                     <Icon style={styles.arrow} name="arrow-back" onPress={() => navigate("Reizen")} />
-                    <Button title="Verder" onPress={this.handleData} />
+                    <Button title="Verder" onPress={() => navigate("ReisToevoegen2")} />
                 </View>
                 <Text style={styles.subTitle}>Selecteer oefeningen voor je reis</Text>
                 <TextInput
@@ -53,16 +62,21 @@ export default class ReisToevoegenScreen extends React.Component {
                     <ScrollView>
                         <View style={styles.cards}>
                             {data.reizen.oefening.map(item => (
-                                <TouchableHighlight style={{ width: '50%' }} key={item.id} onPress={() => this.handleSelect(item.name)}>
-                                    <View style={styles.card}>
-                                        <View>
-                                            <Text style={styles.cardName}>{item.name}</Text>
-                                            <Text style={styles.cardTags}>{item.tags}</Text>
+                                <TouchableHighlight style={{ width: '50%' }} key={item.id} onPress={() => this.handleSelect(item)}>
+                                    <View>
+                                        <View display={this.state.active} style={styles.selectedIcon}>
+                                            <Text style={styles.selectedText}>1</Text>
                                         </View>
-                                        <View style={styles.cardBottom}>
-                                            <Text style={[styles.cardTags, styles.cardTime]}>{item.time}</Text>
-                                            <Image source={require("./../assets/images/stars_1.png")} />
-                                            {/* <Text>{item.rate}</Text> */}
+                                        <View style={styles.card}>
+                                            <View>
+                                                <Text style={styles.cardName}>{item.name}</Text>
+                                                <Text style={styles.cardTags}>{item.tags}</Text>
+                                            </View>
+                                            <View style={styles.cardBottom}>
+                                                <Text style={[styles.cardTags, styles.cardTime]}>{item.time}</Text>
+                                                <Image source={require("./../assets/images/stars_1.png")} />
+                                                {/* <Text>{item.rate}</Text> */}
+                                            </View>
                                         </View>
                                     </View>
                                 </TouchableHighlight>
@@ -114,6 +128,7 @@ const styles = StyleSheet.create({
     cards: {
         flexDirection: "row",
         flexWrap: "wrap",
+        paddingTop: 10,
         paddingLeft: 10,
         paddingRight: 10,
         paddingBottom: 160,
@@ -125,7 +140,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFF3C1",
         height: 132,
         justifyContent: "space-between",
-        borderRadius: 10
+        borderRadius: 10,
+        position: "relative"
     },
     cardName: {
         fontSize: 20,
@@ -142,5 +158,24 @@ const styles = StyleSheet.create({
     },
     cardTime: {
         fontWeight: "bold"
+    },
+    selectedIcon: {
+        width: 40,
+        height: 40,
+        backgroundColor: "#86BCDA",
+        borderRadius: 20,
+        position: "absolute",
+        zIndex: 100,
+        justifyContent: "center",
+        alignSelf: "flex-end",
+        marginTop: -8,
+        marginRight: -15
+    },
+    selectedText: {
+        alignSelf: "center",
+        fontSize: 20
+    },
+    hidden: {
+        display: "none"
     }
 });
