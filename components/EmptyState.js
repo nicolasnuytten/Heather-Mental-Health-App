@@ -11,14 +11,14 @@ export default class EmptyState extends React.Component {
   };
 
   render() {
-    const { navigate } = this.props.navigation;
+    const navigate = this.props.navigate;
     const uid = this.props.uid;
-    const title = this.props.title;
+    // const title = this.props.title;
     return(
     <View style={styles.wolkContainer}>
-      <Text style={[styles.text, styles.donkerBlauw]}>{this.props.q}</Text>
-      <Button style={styles.button} title={`${title}`} onPress={() => navigate(`${this.props.nav}`, { uid })} />
-    </View>
+          <Text style={[styles.text, styles.donkerBlauw]}>Hoe voel je je vandaag?</Text>
+          <Button style={styles.button} title={"Vul in"} onPress={() => navigate("CreateMood", { uid })} />
+      </View>
     )
   }
 }

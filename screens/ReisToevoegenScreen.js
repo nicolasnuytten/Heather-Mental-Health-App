@@ -20,6 +20,7 @@ export default class ReisToevoegenScreen extends React.Component {
 
     static navigationOptions = {
         header: null,
+        tabBarVisible: false,
     };
 
     handleSelect = (item) => {

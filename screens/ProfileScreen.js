@@ -34,7 +34,8 @@ export default class ProfileScreen extends React.Component {
       </View>
 
       <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 60 }} >
-        <ScrollView style={styles.infoContainer}>
+        <ScrollView style={styles.infoContainer} >
+        <View style={{paddingBottom: 200}}>
           <View style={{ paddingBottom: 20 }}>
             <Text style={styles.subTitle}>Heather App</Text>
             <Text style={styles.text}>Heather helpt je zelfbewuster te worden van je emoties door deze dagelijks bij te houden. Doe aan zelf-coaching door reizen op te stellen om deze emoties de baas te worden via talloze motiverende of rustgevende oefeningen.</Text>
@@ -64,6 +65,7 @@ export default class ProfileScreen extends React.Component {
           ))}
 
           <Text style={styles.text}>Privacybeleid &amp; gebruikerovereenkomsten</Text>
+        </View>
         </ScrollView>
       </ImageBackground>
 
@@ -133,8 +135,8 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingLeft: 20,
     paddingRight: 20,
-    paddingBottom: 20,
-    height: '100%'
+    height: '100%',
+    paddingBottom: 200
   },
   card: {
     paddingBottom: 20,

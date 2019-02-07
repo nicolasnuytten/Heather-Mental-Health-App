@@ -49,12 +49,9 @@ const ReizenStack = createStackNavigator({
   Oefening: OefeningScreen,
   Voltooid: VoltooidScreen,
   OefeningDetail: OefeningDetailScreen,
-  ReisToevoegen: ReisToevoegenScreen,
-  ReisToevoegen2: ReisToevoegenScreen2
 });
 
 ReizenStack.navigationOptions = {
-  tabBarVisible: true,
   tabBarLabel: "Reizen",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon

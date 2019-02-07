@@ -18,6 +18,8 @@ var config = {
 firebase.initializeApp(config);
 let db = firebase.firestore();
 let uid;
+let wolkje;
+let slider1 = 0;
 
 firebase.auth().signInAnonymously().catch(function (error) {
   // Handle Errors here.
@@ -42,33 +44,47 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
     if (m < 10) {
       m = '0' + m;
-    }
-    const data = db.collection(uid).where("date", "==", `${d}/${m}`).limit(1);
-    
+    }    
+    const ref = db.collection(uid);
+    ref.where("uid", "==", uid).where("date", "==", `${d}/${m}` )
+    .get()
+    .then(function(querySnapshot) {
+      wolkje = true;
+        querySnapshot.forEach(function(doc) {
+            console.log(doc.id, " => ", doc.data());
+            console.log(doc.data().slider1);
+            slider1 = doc.data().slider1.value;
+            console.log(slider1)
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+
+
   } else {
     // User is signed out.
-    // ...
     console.log("logged out");
   }
-  // ...
 });
 
-let wolkje = false;
-
-
-
 export default class Homescreen extends React.Component {
+   constructor(props) {
+    super(props);
+    this.state = {
+      slider1: 50,
+      slider2: 50,
+      slider3: 50,
+      tags1: [],
+      tags2: []
+    }
+  }
   static navigationOptions = {
     header: null,
   };
-
-  handleCheckMood = () => {
-
-
-  };
-
-
+  
   render() {
+    console.log(slider1);
     const { navigate } = this.props.navigation;
     return <View style={styles.container}>
       <View style={styles.container2}>
@@ -84,19 +100,16 @@ export default class Homescreen extends React.Component {
             <Image source={require("./../assets/images/profile_icon.png")} />
           </TouchableHighlight>
         </View>
-        {/* {wolkje ? <Text>het wolkje komt hier</Text> : <EmptyState q={"Hoe voel je je vandaag?"} title={"Vul in"} nav={"CreateMood"} uid={uid}/> } */}
-        <View style={styles.wolkContainer}>
-          <Text style={[styles.text, styles.donkerBlauw]}>Hoe voel je je vandaag?</Text>
-          <Button style={styles.button} title={"Vul in"} onPress={() => navigate("CreateMood", { uid })} />
-        </View>
-        {/* {reizen ? <Text>Jouw reizen komen hier</Text> : <EmptyState /> } */}
+
+        {wolkje ? <Text>{slider1}</Text> : <EmptyState navigate={navigate} uid={uid}/> }
+
         <View style={styles.reizenContainer}>
           <Text style={styles.reizenTitle}>Mijn reizen</Text>
           <Text style={[styles.text, styles.donkerBlauw]}>Je hebt nog geen reizen gemaakt, eens proberen?</Text>
           <Button title="Reis maken" onPress={() => navigate("Reizen")} />
         </View>
       </View>
-      <Svg style={{ zIndex: -2 }} width="375" height="483" viewBox="0 0 375 483" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <Svg style={{ zIndex: -2, position: 'relative' }} width="375" height="483" viewBox="0 0 375 483" fill="none" xmlns="http://www.w3.org/2000/svg">
         <G opacity="0.43843" fill="#A9D5ED">
           <Path fill-rule="evenodd" clip-rule="evenodd" d="M155 238.559L376 239V189.117L272.818 93L155 238.559Z" />
           <Path fill-rule="evenodd" clip-rule="evenodd" d="M273.697 94L299.216 117.768L297.021 133.793L305 151H279.835L268.786 131.642L233 144.029L273.697 94Z" />
@@ -137,18 +150,16 @@ const styles = StyleSheet.create({
     padding: 20
   },
   headerContainer: {
-    //flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingTop: 10
   },
   wolkContainer: {
-    //flex: 2
-    height: "50%"
+    // flex: 1,
+    height: '40%'
   },
   reizenContainer: {
-    //flex: 2
-    height: "50%"
+    // flex: 1,
+    height: '40%'
   },
   donkerBlauw: {
     color: '#104664'
