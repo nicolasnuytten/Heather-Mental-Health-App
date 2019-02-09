@@ -11,7 +11,11 @@ import ReizenScreen from "../screens/ReizenScreen";
 import OefeningDetailScreen from "../screens/OefeningDetailScreen";
 import ReisToevoegenScreen from "../screens/ReisToevoegenScreen";
 import ReisToevoegenScreen2 from "../screens/ReisToevoegenScreen2";
+<<<<<<< HEAD
 import TestScreen from "../screens/TestScreen";
+=======
+import ReisDetailScreen from "../screens/ReisDetailScreen";
+>>>>>>> 2e36ddd2581de367b0394ce5daefc6727a313c2c
 
 export default createAppContainer(
   createSwitchNavigator({
@@ -21,12 +25,13 @@ export default createAppContainer(
     Profile: ProfileScreen,
     CreateMood: CreateMoodScreen,
     CreateMood2: CreateMoodScreen2,
-    Voltooid: VoltooidScreen,
-    Oefening: OefeningScreen,
-    Reizen: ReizenScreen,
     OefeningDetail: OefeningDetailScreen,
     ReisToevoegen: ReisToevoegenScreen,
     ReisToevoegen2: ReisToevoegenScreen2,
+<<<<<<< HEAD
     Test: TestScreen
+=======
+    ReisDetail: ReisDetailScreen
+>>>>>>> 2e36ddd2581de367b0394ce5daefc6727a313c2c
   })
 );

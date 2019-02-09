@@ -72,7 +72,7 @@ export default class Homescreen extends React.Component {
    constructor(props) {
     super(props);
     this.state = {
-      slider1: 50,
+      slider1: slider1,
       slider2: 50,
       slider3: 50,
       tags1: [],
@@ -101,7 +101,10 @@ export default class Homescreen extends React.Component {
           </TouchableHighlight>
         </View>
 
-        {wolkje ? <Text>{slider1}</Text> : <EmptyState navigate={navigate} uid={uid}/> }
+        {wolkje ? <Text>{slider1}</Text> : <View style={styles.wolkContainer}>
+          <Text style={[styles.text, styles.donkerBlauw]}>Hoe voel je je vandaag?</Text>
+          <Button style={styles.button} title={"Vul in"} onPress={() => navigate("CreateMood", { uid })} />
+      </View> }
 
         <View style={styles.reizenContainer}>
           <Text style={styles.reizenTitle}>Mijn reizen</Text>

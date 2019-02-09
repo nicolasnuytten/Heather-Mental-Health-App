@@ -8,11 +8,12 @@ import MoodScreen from '../screens/MoodScreen';
 import CreateMoodScreen from '../screens/CreateMoodScreen';
 import CreateMoodScreen2 from '../screens/CreateMoodScreen2';
 import ReizenScreen from '../screens/ReizenScreen';
+import ReisDetailScreen from '../screens/ReisDetailScreen';
 import OefeningScreen from '../screens/OefeningScreen';
 import VoltooidScreen from '../screens/VoltooidScreen';
 import OefeningDetailScreen from '../screens/OefeningDetailScreen';
-import ReisToevoegenScreen from '../screens/ReisToevoegenScreen';
-import ReisToevoegenScreen2 from '../screens/ReisToevoegenScreen2';
+// import ReisToevoegenScreen from '../screens/ReisToevoegenScreen';
+// import ReisToevoegenScreen2 from '../screens/ReisToevoegenScreen2';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -48,7 +49,6 @@ const ReizenStack = createStackNavigator({
   Reizen: ReizenScreen,
   Oefening: OefeningScreen,
   Voltooid: VoltooidScreen,
-  OefeningDetail: OefeningDetailScreen,
 });
 
 ReizenStack.navigationOptions = {

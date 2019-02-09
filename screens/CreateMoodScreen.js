@@ -42,6 +42,7 @@ export default class CreateMood extends React.Component {
   handleData = () => {
     const { navigate } = this.props.navigation;
     const uid = this.props.navigation.state.params.uid;
+    console.log(uid);
     
     const today = new Date();
     let d = today.getDate();
