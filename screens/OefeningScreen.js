@@ -20,8 +20,9 @@ export default class OefeningScreen extends React.Component {
         </View>
         <TextInput
           style={styles.textInput}
-          value={"Stress, ontspanning,..."}
+          placeholder={"Stress, ontspanning,..."}
         />
+        <Button title="Test" onPress={() => navigate("Test")} />
 
         <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 60 }} >
           <ScrollView>

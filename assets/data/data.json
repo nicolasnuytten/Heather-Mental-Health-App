@@ -359,5 +359,79 @@
       "chat": "www.teleblok.be/chat/contact_opnemen_met_teleblok",
       "site": "www.teleblok.be"
     }
+  ],
+  "test": [
+    {
+      "id": "1",
+      "category": "Focus",
+      "question": "Zou je je dagen graag productiever maken?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_0"
+    },
+    {
+      "id": "2",
+      "category": "Focus",
+      "question": "Kan je je goed concentreren?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_1"
+    },
+    {
+      "id": "3",
+      "category": "Rust",
+      "question": "Sta je open voor meditatie?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_2"
+    },
+    {
+      "id": "4",
+      "category": "Rust",
+      "question": "Worden de hoge verwachting van je omgeving je soms te veel?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_3"
+    },
+    {
+      "id": "5",
+      "category": "Rust",
+      "question": "Doe je graag aan fysieke ontspanning?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_4"
+    },
+    {
+      "id": "6",
+      "category": "Leven",
+      "question": "Heb je soms last van een gat in de hand?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_5"
+    },
+    {
+      "id": "7",
+      "category": "Leven",
+      "question": "Zou je de band met je partner graag versterken?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_6"
+    },
+    {
+      "id": "8",
+      "category": "Leven",
+      "question": "Ben je onlangs iemand verloren in je leven?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_7"
+    },
+    {
+      "id": "9",
+      "category": "Slaap",
+      "question": "Hoe is je slaapritme?",
+      "answer1": "Goed",
+      "answer2": "Slecht",
+      "img": "./images/test_8"
+    }
   ]
 }

@@ -56,7 +56,7 @@ export default class ReisToevoegenScreen extends React.Component {
                 <Text style={styles.subTitle}>Selecteer oefeningen voor je reis</Text>
                 <TextInput
                     style={styles.textInput}
-                    value={"Stress, ontspanning,..."}
+                    placeholder={"Stress, ontspanning,..."}
                 />
 
                 <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 60 }} >

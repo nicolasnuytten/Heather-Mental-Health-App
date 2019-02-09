@@ -36,6 +36,9 @@ const selectedList = [{
 export default class ReisToevoegenScreen2 extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            selected: []
+        };
     }
 
     static navigationOptions = {
@@ -44,6 +47,14 @@ export default class ReisToevoegenScreen2 extends React.Component {
 
     handleData = () => {
         const { navigate } = this.props.navigation;
+    };
+
+    handleDelete = item => {
+        index = selectedList.indexOf(item);
+        selectedList.splice(index, 1);
+        this.setState({
+            selected: selectedList
+        })
     };
 
     render() {
@@ -58,7 +69,7 @@ export default class ReisToevoegenScreen2 extends React.Component {
                 <Text style={styles.subTitle}>Geef je reis een titel</Text>
                 <TextInput
                     style={styles.textInput}
-                    value={"Mijn reis"}
+                    placeholder={"Mijn reis"}
                 />
 
                 <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 60 }} >
@@ -66,16 +77,16 @@ export default class ReisToevoegenScreen2 extends React.Component {
                     <ScrollView>
                         <View style={styles.cards}>
                             {selectedList.map(item => (
-                                <View key={item.id} style={styles.card}>
+                                <View key={item.id} style={styles.cardContainer}>
                                     <Text style={styles.cardNumber}>1</Text>
-                                    <View>
+                                    <View style={styles.card}>
                                         <Text style={styles.cardName}>{item.name}</Text>
                                         <View style={styles.cardInfo}>
                                             <Text style={styles.cardTags}>{item.tags}</Text>
-                                            <Text style={styles.cardTime}>{item.time}</Text>
+                                            <Text style={[styles.cardTags, styles.cardTime]}>{item.time}</Text>
                                         </View>
                                     </View>
-                                    <TouchableHighlight style={styles.delete}>
+                                    <TouchableHighlight style={styles.delete} onPress={() => this.handleDelete(item)}>
                                         <Image source={require("./../assets/images/delete_icon.png")} />
                                     </TouchableHighlight>
                                 </View>
@@ -127,13 +138,45 @@ const styles = StyleSheet.create({
         color: "#BDE2F6",
         fontSize: 16
     },
-    selectedTitle: {
-
+    cardContainer: {
+        flexDirection: "row",
+        marginLeft: 20,
+        marginRight: 20,
+        marginBottom: 10,
+        marginTop: 10,
+        alignContent: "center",
+        justifyContent: "space-between"
     },
     card: {
+        backgroundColor: "#FFF3C1",
+        flex: 1,
+        borderRadius: 10,
+        padding: 8
+    },
+    cardNumber: {
+        color: "#104664",
+        fontSize: 18,
+        paddingRight: 15,
+        alignSelf: "center"
+    },
+    cardName: {
+        color: "#104664",
+        fontSize: 20,
+        fontWeight: "bold"
+    },
+    cardInfo: {
         flexDirection: "row",
-        margin: 20,
-        alignContent: "center",
-        padding: 10
+        justifyContent: "space-between"
+    },
+    cardTags: {
+        fontSize: 16,
+        color: "#F2994A"
+    },
+    cardTime: {
+        fontWeight: "bold"
+    },
+    delete: {
+        alignSelf: "center",
+        paddingLeft: 10
     }
 });
