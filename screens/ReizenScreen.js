@@ -29,7 +29,8 @@ export default class ReizenScreen extends React.Component {
           <ScrollView>
             <View style={styles.cards}>
               {data.reizen.reizen.map(reis => (
-                <View key={reis.id} style={styles.card}>
+                <TouchableHighlight onPress={() => navigate("ReisDetail")} key={reis.id}>
+                <View  style={styles.card}>
                   <Text style={styles.cardName}>{reis.name}</Text>
                   <View style={styles.cardProgress}>
                     <Text style={styles.cardProgressTitles}>
@@ -47,6 +48,7 @@ export default class ReizenScreen extends React.Component {
                     }
                   </View>
                 </View>
+                </TouchableHighlight>
               ))}
             </View>
           </ScrollView>

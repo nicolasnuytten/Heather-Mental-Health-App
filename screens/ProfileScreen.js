@@ -5,7 +5,7 @@ import data from "../assets/data/data.json";
 
 export default class ProfileScreen extends React.Component {
   static navigationOptions = {
-    header: "Profile",
+    header: null,
   };
 
   render() {
