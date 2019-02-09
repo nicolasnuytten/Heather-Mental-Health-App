@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, ImageBackground, ScrollView, StyleSheet, Text, TouchableHighlight } from "react-native";
 import { Icon } from "react-native-elements";
+import Circle from "../components/Circle.js";
 
 export default class ReisDetailScreen extends React.Component {
   constructor(props) {
@@ -22,9 +23,13 @@ export default class ReisDetailScreen extends React.Component {
         <ScrollView style={{flex: 2}} contentOffset={{x: 0, y: 560}}>
           <ImageBackground source={require("./../assets/images/background_city.png")} style={styles.backgroundImage} >
             <View>
-              <TouchableHighlight style={styles.circle}>
+              {/* <TouchableHighlight style={styles.circle}>
                 <Text>1</Text>
-              </TouchableHighlight>
+              </TouchableHighlight> */}
+              <Circle style={styles.circle, {marginTop: 970, marginLeft: 50}} number={"1"}/>
+              <Circle style={styles.circle, {marginTop: 900, marginLeft: 50}} number={"2"}/>
+              <Circle style={styles.circle, {marginTop: 850, marginLeft: 50}} number={"3"}/>
+
             </View>
           </ImageBackground>
         </ScrollView>
