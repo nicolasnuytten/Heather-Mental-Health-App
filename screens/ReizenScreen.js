@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, View, ScrollView, StyleSheet, Text, TouchableHighlight, Button, Platform, ProgressBarAndroid, ProgressViewIOS, Image } from 'react-native';
+import { ImageBackground, View, ScrollView, StyleSheet, Text, TouchableOpacity, Platform, ProgressBarAndroid, ProgressViewIOS, Image } from 'react-native';
 import { Icon } from "react-native-elements";
 import { createStackNavigator, createAppNavigator } from "react-navigation";
 import data from "../assets/data/data.json";
@@ -17,38 +17,44 @@ export default class ReizenScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.navHeader}>
-          <Button title="Voltooid" onPress={() => navigate("Voltooid")} />
-          <Button title="Reizen" onPress={() => navigate("Reizen")} />
-          <Button title="Oefening" onPress={() => navigate("Oefening")} />
+          <TouchableOpacity onPress={() => navigate("Voltooid")} >
+            <Text style={styles.buttonText}>Voltooid</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigate("Reizen")} >
+            <Text style={[styles.buttonText, styles.active]}>Reizen</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigate("Oefening")} >
+            <Text style={styles.buttonText}>Oefenen</Text>
+          </TouchableOpacity>
         </View>
-        <TouchableHighlight style={styles.newButton} onPress={() => navigate("ReisToevoegen")} >
+        <TouchableOpacity style={styles.newButton} onPress={() => navigate("ReisToevoegen")} >
           <Image source={require("./../assets/images/new_button.png")} />
-        </TouchableHighlight>
+        </TouchableOpacity>
 
         <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 60 }} >
           <ScrollView>
             <View style={styles.cards}>
               {data.reizen.reizen.map(reis => (
-                <TouchableHighlight onPress={() => navigate("ReisDetail")} key={reis.id}>
-                <View  style={styles.card}>
-                  <Text style={styles.cardName}>{reis.name}</Text>
-                  <View style={styles.cardProgress}>
-                    <Text style={styles.cardProgressTitles}>
-                      Progressie: {reis.goalsDone}/{reis.goalsTotal}
-                    </Text>
-                    <Text style={styles.cardProgressTitles}>{reis.started} geleden gestart</Text>
+                <TouchableOpacity onPress={() => navigate("ReisDetail")} key={reis.id}>
+                  <View style={styles.card}>
+                    <Text style={styles.cardName}>{reis.name}</Text>
+                    <View style={styles.cardProgress}>
+                      <Text style={styles.cardProgressTitles}>
+                        Progressie: {reis.goalsDone}/{reis.goalsTotal}
+                      </Text>
+                      <Text style={styles.cardProgressTitles}>{reis.started} geleden gestart</Text>
+                    </View>
+                    <View style={styles.progressBar}>
+                      {
+                        (Platform.OS === 'android')
+                          ?
+                          (<ProgressBarAndroid styleAttr="Horizontal" progress={.5} indeterminate={false} />)
+                          :
+                          (<ProgressViewIOS progress={.5} />)
+                      }
+                    </View>
                   </View>
-                  <View style={styles.progressBar}>
-                    {
-                      (Platform.OS === 'android')
-                        ?
-                        (<ProgressBarAndroid styleAttr="Horizontal" progress={.5} indeterminate={false} />)
-                        :
-                        (<ProgressViewIOS progress={.5} />)
-                    }
-                  </View>
-                </View>
-                </TouchableHighlight>
+                </TouchableOpacity>
               ))}
             </View>
           </ScrollView>
@@ -69,7 +75,8 @@ const styles = StyleSheet.create({
   },
   navHeader: {
     flexDirection: "row",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
+    alignItems: "center"
   },
   newButton: {
     alignSelf: "center",
@@ -104,5 +111,15 @@ const styles = StyleSheet.create({
     padding: 2,
     borderRadius: 10,
     backgroundColor: "#104664"
+  },
+  buttonText: {
+    fontSize: 18,
+    color: "#86BCDA",
+    paddingTop: 10
+  },
+  active: {
+    fontSize: 24,
+    color: "#104664",
+    fontWeight: "bold"
   }
 });

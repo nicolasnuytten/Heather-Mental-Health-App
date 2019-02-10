@@ -14,7 +14,6 @@ import ReisToevoegenScreen2 from "../screens/ReisToevoegenScreen2";
 import TestScreen from "../screens/TestScreen";
 import ReisDetailScreen from "../screens/ReisDetailScreen";
 
-
 export default createAppContainer(
   createSwitchNavigator({
     // You could add another route here for authentication.

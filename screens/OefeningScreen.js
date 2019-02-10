@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ImageBackground, ScrollView, FlatList, Image, StyleSheet, Text, TextInput, Button, TouchableHighlight } from "react-native";
+import { View, ImageBackground, ScrollView, FlatList, Image, StyleSheet, Text, TextInput, Button, TouchableOpacity } from "react-native";
 import { List, ListItem, SearchBar } from 'react-native-elements';
 import data from "../assets/data/data.json";
 import { bold } from 'ansi-colors';
@@ -14,9 +14,15 @@ export default class OefeningScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.navHeader}>
-          <Button title="Voltooid" onPress={() => navigate("Voltooid")} />
-          <Button title="Reizen" onPress={() => navigate("Reizen")} />
-          <Button title="Oefening" onPress={() => navigate("Oefening")} />
+          <TouchableOpacity onPress={() => navigate("Voltooid")} >
+            <Text style={styles.buttonText}>Voltooid</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigate("Reizen")} >
+            <Text style={styles.buttonText}>Reizen</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigate("Oefening")} >
+            <Text style={[styles.buttonText, styles.active]}>Oefenen</Text>
+          </TouchableOpacity>
         </View>
         <TextInput
           style={styles.textInput}
@@ -28,7 +34,7 @@ export default class OefeningScreen extends React.Component {
           <ScrollView>
             <View style={styles.cards}>
               {data.reizen.oefening.map(item => (
-                <TouchableHighlight style={{ width: '50%' }} key={item.id} onPress={() => navigate("OefeningDetail")}>
+                <TouchableOpacity style={{ width: '50%' }} key={item.id} onPress={() => navigate("OefeningDetail")}>
                   <View style={styles.card}>
                     <View>
                       <Text style={styles.cardName}>{item.name}</Text>
@@ -40,7 +46,7 @@ export default class OefeningScreen extends React.Component {
                       {/* <Text>{item.rate}</Text> */}
                     </View>
                   </View>
-                </TouchableHighlight>
+                </TouchableOpacity>
               ))}
             </View>
           </ScrollView>
@@ -61,7 +67,8 @@ const styles = StyleSheet.create({
   },
   navHeader: {
     flexDirection: "row",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
+    alignItems: "center"
   },
   textInput: {
     backgroundColor: "#86BCDA",
@@ -101,6 +108,16 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   cardTime: {
+    fontWeight: "bold"
+  },
+  buttonText: {
+    fontSize: 18,
+    color: "#86BCDA",
+    paddingTop: 10
+  },
+  active: {
+    fontSize: 24,
+    color: "#104664",
     fontWeight: "bold"
   }
 });

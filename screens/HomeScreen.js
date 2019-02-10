@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableHighlight, Image, Button } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 import { Svg } from "expo";
 const { Rect, G, Path, Mask, } = Svg;
 import EmptyState from '../components/EmptyState';
@@ -44,22 +44,22 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
     if (m < 10) {
       m = '0' + m;
-    }    
+    }
     const ref = db.collection(uid);
-    ref.where("uid", "==", uid).where("date", "==", `${d}/${m}` )
-    .get()
-    .then(function(querySnapshot) {
-      wolkje = true;
-        querySnapshot.forEach(function(doc) {
-            console.log(doc.id, " => ", doc.data());
-            console.log(doc.data().slider1);
-            slider1 = doc.data().slider1.value;
-            console.log(slider1)
+    ref.where("uid", "==", uid).where("date", "==", `${d}/${m}`)
+      .get()
+      .then(function (querySnapshot) {
+        wolkje = true;
+        querySnapshot.forEach(function (doc) {
+          console.log(doc.id, " => ", doc.data());
+          console.log(doc.data().slider1);
+          slider1 = doc.data().slider1.value;
+          console.log(slider1)
         });
-    })
-    .catch(function(error) {
+      })
+      .catch(function (error) {
         console.log("Error getting documents: ", error);
-    });
+      });
 
 
   } else {
@@ -69,7 +69,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 export default class Homescreen extends React.Component {
-   constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       slider1: slider1,
@@ -82,7 +82,7 @@ export default class Homescreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
-  
+
   render() {
     console.log(slider1);
     const { navigate } = this.props.navigation;
@@ -96,20 +96,24 @@ export default class Homescreen extends React.Component {
               <Text style={[styles.date, styles.mediumBlauw]}>21/01/2019</Text>
             </View>
           </View>
-          <TouchableHighlight onPress={() => navigate("Profile")}>
+          <TouchableOpacity onPress={() => navigate("Profile")}>
             <Image source={require("./../assets/images/profile_icon.png")} />
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
 
         {wolkje ? <Text>{slider1}</Text> : <View style={styles.wolkContainer}>
           <Text style={[styles.text, styles.donkerBlauw]}>Hoe voel je je vandaag?</Text>
-          <Button style={styles.button} title={"Vul in"} onPress={() => navigate("CreateMood", { uid })} />
-      </View> }
+          <TouchableOpacity style={styles.button} onPress={() => navigate("CreateMood", { uid })}>
+            <Text style={styles.buttonText}>Vul in</Text>
+          </TouchableOpacity>
+        </View>}
 
         <View style={styles.reizenContainer}>
           <Text style={styles.reizenTitle}>Mijn reizen</Text>
           <Text style={[styles.text, styles.donkerBlauw]}>Je hebt nog geen reizen gemaakt, eens proberen?</Text>
-          <Button title="Reis maken" onPress={() => navigate("Reizen")} />
+          <TouchableOpacity style={styles.button} onPress={() => navigate("Reizen")}>
+            <Text style={styles.buttonText}>Reis maken</Text>
+          </TouchableOpacity>
         </View>
       </View>
       <Svg style={{ zIndex: -2, position: 'relative' }} width="375" height="483" viewBox="0 0 375 483" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -149,7 +153,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#BDE2F6"
   },
   container2: {
-    flex: 1,
+    //flex: 1,
     padding: 20
   },
   headerContainer: {
@@ -172,11 +176,6 @@ const styles = StyleSheet.create({
   },
   lichtBlauw: {
     color: '#A7D4EC'
-  },
-  button: {
-    backgroundColor: "#144763",
-    color: 'white',
-    borderRadius: 2
   },
   title: {
     color: 'white',
@@ -205,5 +204,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: 250,
     alignSelf: 'center'
+  },
+  button: {
+    backgroundColor: "#104664",
+    borderRadius: 10,
+    width: 140,
+    height: 40,
+    marginTop: 20,
+    justifyContent: "center",
+    alignSelf: "center",
+  },
+  buttonText: {
+    color: "white",
+    alignSelf: "center",
+    fontWeight: "bold",
+    fontSize: 18
   }
 });

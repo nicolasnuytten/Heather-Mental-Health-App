@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Image, StyleSheet, Text, TouchableHighlight } from "react-native";
-import { Button } from "react-native-elements";
+import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import data from "../assets/data/data.json";
 
 const item = data.test;
@@ -45,11 +44,15 @@ export default class TestScreen extends React.Component {
                 <Text style={styles.category}>{item[index].category}</Text>
                 <Text style={styles.question}>{item[index].question}</Text>
                 <View style={styles.answers}>
-                    <Button type="clear" style={styles.answer} title={item[index].answer1} onPress={() => this.handleAnswer(item[index].answer1)} />
-                    <Button type="clear" style={styles.answer} title={item[index].answer2} onPress={() => this.handleAnswer(item[index].answer2)} />
+                    <TouchableOpacity style={styles.answer} onPress={() => this.handleAnswer(item[index].answer1)}>
+                        <Text style={styles.buttonText}>{item[index].answer1}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.answer} onPress={() => this.handleAnswer(item[index].answer1)}>
+                        <Text style={styles.buttonText} > {item[index].answer2}</Text>
+                    </TouchableOpacity>
                 </View>
                 <Image source={require("./../assets/images/background_test.png")} style={{ width: 375, height: 123 }} />
-            </View>
+            </View >
         );
     }
 }
@@ -90,6 +93,14 @@ const styles = StyleSheet.create({
         backgroundColor: "#104664",
         borderRadius: 10,
         width: 140,
-        marginTop: 10
+        height: 40,
+        marginTop: 10,
+        justifyContent: "center"
+    },
+    buttonText: {
+        color: "white",
+        alignSelf: "center",
+        fontWeight: "bold",
+        fontSize: 18
     }
 });
