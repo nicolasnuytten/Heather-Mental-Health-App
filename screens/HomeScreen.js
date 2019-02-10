@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import { Svg } from "expo";
 const { Rect, G, Path, Mask, } = Svg;
 import EmptyState from '../components/EmptyState';
@@ -86,37 +86,37 @@ export default class Homescreen extends React.Component {
   render() {
     console.log(slider1);
     const { navigate } = this.props.navigation;
-    return <View style={styles.container}>
-      <View style={styles.container2}>
-        <View style={styles.headerContainer}>
-          <View>
-            <Text style={styles.title}>Welkom Jolien! </Text>
-            <View style={styles.subTitle}>
-              <Text style={[styles.day, styles.mediumBlauw]}>Maandag</Text>
-              <Text style={[styles.date, styles.mediumBlauw]}>21/01/2019</Text>
+    return <View style={{ backgroundColor: '#BDE2F6', flex: 1 }}>
+      <ImageBackground source={require("./../assets/images/background_mountains_faded.png")} style={{ width: '100%', height: '100%' }}>
+        <View style={styles.container}>
+          <View style={styles.headerContainer}>
+            <View>
+              <Text style={styles.title}>Welkom Jolien! </Text>
+              <View style={styles.subTitle}>
+                <Text style={[styles.day, styles.mediumBlauw]}>Maandag</Text>
+                <Text style={[styles.date, styles.mediumBlauw]}>21/01/2019</Text>
+              </View>
             </View>
+            <TouchableOpacity onPress={() => navigate("Profile")}>
+              <Image source={require("./../assets/images/profile_icon.png")} />
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity onPress={() => navigate("Profile")}>
-            <Image source={require("./../assets/images/profile_icon.png")} />
-          </TouchableOpacity>
-        </View>
 
-        {wolkje ? <Text>{slider1}</Text> : <View style={styles.wolkContainer}>
-          <Text style={[styles.text, styles.donkerBlauw]}>Hoe voel je je vandaag?</Text>
-          <TouchableOpacity style={styles.button} onPress={() => navigate("CreateMood", { uid })}>
-            <Text style={styles.buttonText}>Vul in</Text>
-          </TouchableOpacity>
-        </View>}
+          {wolkje ? <Text>{slider1}</Text> : <View style={styles.wolkContainer}>
+            <Text style={[styles.text, styles.donkerBlauw]}>Hoe voel je je vandaag?</Text>
+            <TouchableOpacity style={styles.button} onPress={() => navigate("CreateMood", { uid })}>
+              <Text style={styles.buttonText}>Vul in</Text>
+            </TouchableOpacity>
+          </View>}
 
-        <View style={styles.reizenContainer}>
           <Text style={styles.reizenTitle}>Mijn reizen</Text>
-          <Text style={[styles.text, styles.donkerBlauw]}>Je hebt nog geen reizen gemaakt, eens proberen?</Text>
-          <TouchableOpacity style={styles.button} onPress={() => navigate("Reizen")}>
-            <Text style={styles.buttonText}>Reis maken</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-      <Svg style={{ zIndex: -2, position: 'relative' }} width="375" height="483" viewBox="0 0 375 483" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <View style={styles.reizenContainer}>
+            <Text style={[styles.text, styles.donkerBlauw]}>Je hebt nog geen reizen gemaakt, eens proberen?</Text>
+            <TouchableOpacity style={styles.button} onPress={() => navigate("Reizen")}>
+              <Text style={styles.buttonText}>Reis maken</Text>
+            </TouchableOpacity>
+          </View>
+          {/* <Svg style={{ zIndex: -2, position: 'relative' }} width="375" height="483" viewBox="0 0 375 483" fill="none" xmlns="http://www.w3.org/2000/svg">
         <G opacity="0.43843" fill="#A9D5ED">
           <Path fill-rule="evenodd" clip-rule="evenodd" d="M155 238.559L376 239V189.117L272.818 93L155 238.559Z" />
           <Path fill-rule="evenodd" clip-rule="evenodd" d="M273.697 94L299.216 117.768L297.021 133.793L305 151H279.835L268.786 131.642L233 144.029L273.697 94Z" />
@@ -142,31 +142,33 @@ export default class Homescreen extends React.Component {
           </G>
           <Rect y="361" width="375" height="231" fill="#A2D1EB" />
         </G>
-      </Svg>
+      </Svg> */}
+        </View>
+      </ImageBackground>
     </View>;
+
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#BDE2F6"
-  },
-  container2: {
-    //flex: 1,
     padding: 20
   },
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingTop: 10
   },
   wolkContainer: {
     // flex: 1,
-    height: '40%'
+    height: '40%',
+    justifyContent: "center"
   },
   reizenContainer: {
     // flex: 1,
-    height: '40%'
+    height: '40%',
+    justifyContent: "center"
   },
   donkerBlauw: {
     color: '#104664'

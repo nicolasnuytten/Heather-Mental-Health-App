@@ -13,6 +13,7 @@ import ReisToevoegenScreen from "../screens/ReisToevoegenScreen";
 import ReisToevoegenScreen2 from "../screens/ReisToevoegenScreen2";
 import TestScreen from "../screens/TestScreen";
 import ReisDetailScreen from "../screens/ReisDetailScreen";
+import AdemhalenOefeningScreen from "../screens/AdemhalenOefeningScreen";
 
 export default createAppContainer(
   createSwitchNavigator({
@@ -26,6 +27,7 @@ export default createAppContainer(
     ReisToevoegen: ReisToevoegenScreen,
     ReisToevoegen2: ReisToevoegenScreen2,
     Test: TestScreen,
-    ReisDetail: ReisDetailScreen
+    ReisDetail: ReisDetailScreen,
+    AdemhalenOefening: AdemhalenOefeningScreen,
   })
 );

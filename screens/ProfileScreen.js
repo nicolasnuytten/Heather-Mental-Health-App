@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, ImageBackground, Image, ScrollView, StyleSheet, Text, TouchableHighlight, Button } from 'react-native';
-import { Icon } from "react-native-elements";
+import { View, ImageBackground, Image, ScrollView, StyleSheet, Text, TouchableOpacity, Button } from 'react-native';
 import data from "../assets/data/data.json";
 
 export default class ProfileScreen extends React.Component {
@@ -11,10 +10,11 @@ export default class ProfileScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return <View style={styles.container}>
-      <View style={styles.header}>
-        <Icon style={styles.arrow} name="arrow-back" onPress={() => navigate("Home")} />
-        <Text style={styles.title}>Profiel</Text>
-      </View>
+      <TouchableOpacity style={styles.arrow} onPress={() => navigate("Home")}>
+        <Image source={require("./../assets/images/back_arrow.png")} />
+      </TouchableOpacity>
+      <Text style={styles.title}>Profiel</Text>
+
       <View style={styles.statsContainer}>
         <Text style={styles.subTitle}>Statestieken</Text>
         <View style={styles.stats}>
@@ -35,37 +35,37 @@ export default class ProfileScreen extends React.Component {
 
       <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 60 }} >
         <ScrollView style={styles.infoContainer} >
-        <View style={{paddingBottom: 200}}>
-          <View style={{ paddingBottom: 20 }}>
-            <Text style={styles.subTitle}>Heather App</Text>
-            <Text style={styles.text}>Heather helpt je zelfbewuster te worden van je emoties door deze dagelijks bij te houden. Doe aan zelf-coaching door reizen op te stellen om deze emoties de baas te worden via talloze motiverende of rustgevende oefeningen.</Text>
-          </View>
-          <View style={{ paddingBottom: 20 }}>
-            <Text style={[styles.subTitle, styles.orange]}>Hulpcentrum</Text>
-            <Text style={[styles.text, styles.orange]}>Heb je verdere hulp nodig? Geen zorgen, we got you! Hier zijn enkele geweldige organisaties.</Text>
-          </View>
-
-          {data.organisaties.map(item => (
-            <View key={item.name} style={styles.card}>
-              <Text style={styles.orgName}>{item.name}</Text>
-              <Text style={[styles.text, styles.lichtBlauw, styles.orgInfo]}>{item.info}</Text>
-              <View style={styles.orgContact}>
-                <Image style={{ marginRight: 10 }} source={require("./../assets/images/phone_icon.png")} />
-                <Text style={styles.text}>{item.phone}</Text>
-              </View>
-              <View style={styles.orgContact}>
-                <Image style={{ marginRight: 10 }} source={require("./../assets/images/chat_icon.png")} />
-                <Text style={styles.text}>{item.chat}</Text>
-              </View>
-              <View style={styles.orgContact}>
-                <Image style={{ marginRight: 6 }} source={require("./../assets/images/site_icon.png")} />
-                <Text style={styles.text}>{item.site}</Text>
-              </View>
+          <View style={{ paddingBottom: 200 }}>
+            <View style={{ paddingBottom: 20 }}>
+              <Text style={styles.subTitle}>Heather App</Text>
+              <Text style={styles.text}>Heather helpt je zelfbewuster te worden van je emoties door deze dagelijks bij te houden. Doe aan zelf-coaching door reizen op te stellen om deze emoties de baas te worden via talloze motiverende of rustgevende oefeningen.</Text>
             </View>
-          ))}
+            <View style={{ paddingBottom: 20 }}>
+              <Text style={[styles.subTitle, styles.orange]}>Hulpcentrum</Text>
+              <Text style={[styles.text, styles.orange]}>Heb je verdere hulp nodig? Geen zorgen, we got you! Hier zijn enkele geweldige organisaties.</Text>
+            </View>
 
-          <Text style={styles.text}>Privacybeleid &amp; gebruikerovereenkomsten</Text>
-        </View>
+            {data.organisaties.map(item => (
+              <View key={item.name} style={styles.card}>
+                <Text style={styles.orgName}>{item.name}</Text>
+                <Text style={[styles.text, styles.lichtBlauw, styles.orgInfo]}>{item.info}</Text>
+                <View style={styles.orgContact}>
+                  <Image style={{ marginRight: 10 }} source={require("./../assets/images/phone_icon.png")} />
+                  <Text style={styles.text}>{item.phone}</Text>
+                </View>
+                <View style={styles.orgContact}>
+                  <Image style={{ marginRight: 10 }} source={require("./../assets/images/chat_icon.png")} />
+                  <Text style={styles.text}>{item.chat}</Text>
+                </View>
+                <View style={styles.orgContact}>
+                  <Image style={{ marginRight: 6 }} source={require("./../assets/images/site_icon.png")} />
+                  <Text style={styles.text}>{item.site}</Text>
+                </View>
+              </View>
+            ))}
+
+            <Text style={styles.text}>Privacybeleid &amp; gebruikerovereenkomsten</Text>
+          </View>
         </ScrollView>
       </ImageBackground>
 
@@ -73,27 +73,34 @@ export default class ProfileScreen extends React.Component {
   }
 }
 
-const handleProfile = () => {
-
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#BDE2F6",
     paddingTop: 20
   },
-  header: {
-    flexDirection: 'row',
-    paddingTop: 10,
-    alignSelf: 'center'
-  },
+  // header: {
+  //   flexDirection: 'row',
+  //   paddingTop: 10,
+  //   paddingLeft: 20,
+  //   width: "60%",
+  //   justifyContent: "space-between"
+  //   //alignSelf: 'center'
+  // },
   title: {
     color: 'white',
     fontSize: 26,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    marginTop: -22
   },
   arrow: {
+    alignSelf: "flex-start",
+    paddingLeft: 20,
+    paddingTop: 10,
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    alignContent: "flex-start"
   },
   statsContainer: {
     paddingTop: 10,

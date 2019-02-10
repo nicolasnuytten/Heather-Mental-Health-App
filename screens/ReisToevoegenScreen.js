@@ -1,9 +1,7 @@
 import React from 'react';
-import { View, ImageBackground, ScrollView, Image, StyleSheet, Text, TextInput, Button, TouchableHighlight } from "react-native";
-import { SearchBar } from 'react-native-elements';
+import { View, ImageBackground, ScrollView, Image, StyleSheet, Text, TextInput, Button, TouchableOpacity } from "react-native";
 import data from "../assets/data/data.json";
 import { bold } from 'ansi-colors';
-import { Icon } from "react-native-elements";
 
 const selectedList = [];
 // const maximum = 7;
@@ -50,8 +48,12 @@ export default class ReisToevoegenScreen extends React.Component {
             <View style={styles.container}>
                 <Text style={styles.title}>Nieuwe reis</Text>
                 <View style={styles.navHeader}>
-                    <Icon style={styles.arrow} name="arrow-back" onPress={() => navigate("Reizen")} />
-                    <Button title="Verder" onPress={() => navigate("ReisToevoegen2")} />
+                    <TouchableOpacity style={styles.arrow} onPress={() => navigate("Reizen")}>
+                        <Image source={require("./../assets/images/back_arrow.png")} />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigate("ReisToevoegen2")}>
+                        <Text style={styles.buttonText}>Verder</Text>
+                    </TouchableOpacity>
                 </View>
                 <Text style={styles.subTitle}>Selecteer oefeningen voor je reis</Text>
                 <TextInput
@@ -63,7 +65,7 @@ export default class ReisToevoegenScreen extends React.Component {
                     <ScrollView>
                         <View style={styles.cards}>
                             {data.reizen.oefening.map(item => (
-                                <TouchableHighlight style={{ width: '50%' }} key={item.id} onPress={() => this.handleSelect(item)}>
+                                <TouchableOpacity style={{ width: '50%' }} key={item.id} onPress={() => this.handleSelect(item)}>
                                     <View>
                                         <View display={this.state.active} style={styles.selectedIcon}>
                                             <Text style={styles.selectedText}>1</Text>
@@ -80,7 +82,7 @@ export default class ReisToevoegenScreen extends React.Component {
                                             </View>
                                         </View>
                                     </View>
-                                </TouchableHighlight>
+                                </TouchableOpacity>
                             ))}
                         </View>
                     </ScrollView>
@@ -103,9 +105,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignContent: "center",
-        marginTop: -30,
+        marginTop: -25,
         paddingLeft: 20,
-        paddingRight: 20
+        paddingRight: 20,
+        paddingBottom: 20
     },
     title: {
         fontSize: 22,
@@ -178,5 +181,10 @@ const styles = StyleSheet.create({
     },
     hidden: {
         display: "none"
+    },
+    buttonText: {
+        fontSize: 18,
+        color: "#104664"
     }
+
 });

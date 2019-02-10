@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, ImageBackground, ScrollView, Image, StyleSheet, Text, Button } from "react-native";
-import { Icon } from "react-native-elements";
+import { View, ImageBackground, ScrollView, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import data from "../assets/data/data.json";
 
 export default class OefeningDetailScreen extends React.Component {
@@ -13,9 +12,14 @@ export default class OefeningDetailScreen extends React.Component {
         const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
-                <Icon style={styles.arrow} name="arrow-back" onPress={() => navigate("Oefening")} />
+                <TouchableOpacity style={styles.arrow} onPress={() => navigate("Oefening")}>
+                    <Image source={require("./../assets/images/back_arrow.png")} />
+                </TouchableOpacity>
                 <Image style={styles.image} source={require("./../assets/images/test_oefening.png")}></Image>
                 <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 40 }}>
+                    <TouchableOpacity style={styles.startButton} onPress={() => navigate("AdemhalenOefening")}>
+                        <Text style={styles.buttonText}>Start</Text>
+                    </TouchableOpacity>
                     <ScrollView style={styles.oefeningContainer}>
                         <Text style={styles.title}>Gefocused ademhalen</Text>
                         <View style={styles.infoContainer}>
@@ -40,7 +44,6 @@ export default class OefeningDetailScreen extends React.Component {
                         </View>
 
                     </ScrollView>
-                    <Button style={styles.startButton} title="Start" onPress={() => navigate("Oefeningen")} />
                 </ImageBackground>
             </View >
         );
@@ -51,15 +54,17 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#BDE2F6",
-        paddingTop: 20
+        paddingTop: 20,
+        position: "relative"
     },
     arrow: {
         padding: 20
     },
     image: {
         zIndex: -10,
-        marginTop: -20,
-        marginBottom: -45
+        marginTop: -55,
+        marginBottom: -45,
+        width: "100%"
     },
     oefeningContainer: {
         margin: 20
@@ -101,6 +106,20 @@ const styles = StyleSheet.create({
         paddingBottom: 5
     },
     startButton: {
-
+        backgroundColor: "#104664",
+        borderRadius: 10,
+        width: 140,
+        height: 40,
+        marginTop: 420,
+        justifyContent: "center",
+        alignSelf: "center",
+        zIndex: 10,
+        position: "absolute"
+    },
+    buttonText: {
+        color: "white",
+        alignSelf: "center",
+        fontWeight: "bold",
+        fontSize: 18
     }
 });

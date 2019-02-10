@@ -1,9 +1,7 @@
 import React from 'react';
-import { View, ImageBackground, ScrollView, Image, StyleSheet, Text, TextInput, Button, TouchableHighlight } from "react-native";
-import { SearchBar } from 'react-native-elements';
+import { View, ImageBackground, ScrollView, Image, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
 import data from "../assets/data/data.json";
 import { bold } from 'ansi-colors';
-import { Icon } from "react-native-elements";
 
 const selectedList = [{
     "id": "01",
@@ -63,8 +61,12 @@ export default class ReisToevoegenScreen2 extends React.Component {
             <View style={styles.container}>
                 <Text style={styles.title}>Nieuwe reis</Text>
                 <View style={styles.navHeader}>
-                    <Icon style={styles.arrow} name="arrow-back" onPress={() => navigate("ReisToevoegen")} />
-                    <Button title="Opslaan" onPress={this.handleData} />
+                    <TouchableOpacity style={styles.arrow} onPress={() => navigate("ReisToevoegen")}>
+                        <Image source={require("./../assets/images/back_arrow.png")} />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={this.handleData}>
+                        <Text style={styles.buttonText}>Opslaan</Text>
+                    </TouchableOpacity>
                 </View>
                 <Text style={styles.subTitle}>Geef je reis een titel</Text>
                 <TextInput
@@ -86,9 +88,9 @@ export default class ReisToevoegenScreen2 extends React.Component {
                                             <Text style={[styles.cardTags, styles.cardTime]}>{item.time}</Text>
                                         </View>
                                     </View>
-                                    <TouchableHighlight style={styles.delete} onPress={() => this.handleDelete(item)}>
+                                    <TouchableOpacity style={styles.delete} onPress={() => this.handleDelete(item)}>
                                         <Image source={require("./../assets/images/delete_icon.png")} />
-                                    </TouchableHighlight>
+                                    </TouchableOpacity>
                                 </View>
                             ))}
                         </View>
@@ -112,9 +114,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignContent: "center",
-        marginTop: -30,
+        marginTop: -25,
         paddingLeft: 20,
-        paddingRight: 20
+        paddingRight: 20,
+        paddingBottom: 20
     },
     title: {
         fontSize: 22,
@@ -178,5 +181,9 @@ const styles = StyleSheet.create({
     delete: {
         alignSelf: "center",
         paddingLeft: 10
+    },
+    buttonText: {
+        fontSize: 18,
+        color: "#104664"
     }
 });
