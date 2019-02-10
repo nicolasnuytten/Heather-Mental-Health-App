@@ -10,9 +10,10 @@ export default class OefeningDetailScreen extends React.Component {
 
     render() {
         const { navigate } = this.props.navigation;
+        const screen = this.props.navigation.state.params.screen;
         return (
             <View style={styles.container}>
-                <TouchableOpacity style={styles.arrow} onPress={() => navigate("Oefening")}>
+                <TouchableOpacity style={styles.arrow} onPress={() => navigate(screen)}>
                     <Image source={require("./../assets/images/back_arrow.png")} />
                 </TouchableOpacity>
                 <Image style={styles.image} source={require("./../assets/images/test_oefening.png")}></Image>

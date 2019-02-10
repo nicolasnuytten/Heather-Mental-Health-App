@@ -13,8 +13,10 @@ export default class EmptyState extends React.Component {
   render() {
     const navigate = this.props.navigate;
     const number = this.props.number;
+    // const top = this.props.top;
+    // const left = this.props.left;
     return(
-    <TouchableHighlight>
+    <TouchableHighlight style={styles.circle}>
       <Text style={styles.circleText}>{number}</Text>
     </TouchableHighlight>
     )
@@ -26,6 +28,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#BDE2F6",
     paddingTop: 20
+  },
+  circle: {
+    width: 50,
+    height: 50,
+    backgroundColor: '#fff',
+    padding: 10,
+    position: 'absolute',
+    borderRadius: 100
   },
   circleText: {
     textAlign: 'center',
