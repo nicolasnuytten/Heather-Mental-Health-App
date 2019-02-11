@@ -41,12 +41,12 @@ export default class OefeningDetailScreen extends React.Component {
                         <Text style={styles.subTitle}>Informatie</Text>
                         <Text style={[styles.text, styles.intro]}>{item.intro}</Text>
                         <View>
-                            {item.steps.map(step => (
-                                <View key={item.id}>
-                                    <Text style={styles.stepTitle}>Stap 1</Text>
-                                    <Text style={styles.text}>Ga rechtop staan en verdeel je gewicht over beide voeten zodat je stabiel staat.</Text>
+                        {item ? null :item.steps.map(step => (
+                                <View key={item.step}>
+                                    <Text style={styles.stepTitle}>{step.step}</Text>
+                                    <Text style={styles.text}>{step.instruction}</Text>
                                 </View>
-                            ))}
+                            )) }
 
                             
                         </View>

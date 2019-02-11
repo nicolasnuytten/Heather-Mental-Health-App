@@ -18,22 +18,22 @@ export default class ReizenScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
-  componentDidMount = async() => {
-    // this.setState({oefList:[]})
-    // await AsyncStorage.clear();
-    console.log(oefList)
-      await AsyncStorage.getAllKeys().then((value) => {
-        value.map( item => {
-          if (!item.startsWith('firebase')){
-            console.log(item);
-            oefList.push(value);
-            this.setState({ oefList })
-          }
-        })
-        // console.log(value);
+  // componentDidMount = async() => {
+  //   // this.setState({oefList:[]})
+  //   // await AsyncStorage.clear();
+  //   console.log(oefList)
+  //     await AsyncStorage.getAllKeys().then((value) => {
+  //       value.map( item => {
+  //         if (!item.startsWith('firebase')){
+  //           console.log(item);
+  //           oefList.push(value);
+  //           this.setState({ oefList })
+  //         }
+  //       })
+  //       // console.log(value);
 
-      });
-  };
+  //     });
+  // };
 
   componentDidUpdate = () => {
     console.log("component did update!")
