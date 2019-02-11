@@ -2,40 +2,44 @@ import React from 'react';
 import { View, ImageBackground, ScrollView, Image, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
 import data from "../assets/data/data.json";
 import { bold } from 'ansi-colors';
+import { AsyncStorage } from 'react-native';
 
-const selectedList = [{
-    "id": "01",
-    "name": "Gefocust ademhalen",
-    "tags": "gezondheid",
-    "intro": "",
-    "time": "5min.",
-    "rate": "1",
-    "category": "Focus"
-},
-{
-    "id": "02",
-    "name": "Gefocust ademhalen",
-    "tags": "gezondheid",
-    "intro": "",
-    "time": "5min.",
-    "rate": "1",
-    "category": "Focus"
-},
-{
-    "id": "03",
-    "name": "Gefocust ademhalen",
-    "tags": "gezondheid",
-    "intro": "",
-    "time": "5min.",
-    "rate": "1",
-    "category": "Focus"
-}];
+// const selectedList = [{
+//     "id": "01",
+//     "name": "Gefocust ademhalen",
+//     "tags": "gezondheid",
+//     "intro": "",
+//     "time": "5min.",
+//     "rate": "1",
+//     "category": "Focus"
+// },
+// {
+//     "id": "02",
+//     "name": "Gefocust ademhalen",
+//     "tags": "gezondheid",
+//     "intro": "",
+//     "time": "5min.",
+//     "rate": "1",
+//     "category": "Focus"
+// },
+// {
+//     "id": "03",
+//     "name": "Gefocust ademhalen",
+//     "tags": "gezondheid",
+//     "intro": "",
+//     "time": "5min.",
+//     "rate": "1",
+//     "category": "Focus"
+// }];
+
+let selectedList;
 
 export default class ReisToevoegenScreen2 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selected: []
+            selected: [],
+            text: null
         };
     }
 
@@ -43,8 +47,18 @@ export default class ReisToevoegenScreen2 extends React.Component {
         header: null,
     };
 
-    handleData = () => {
+    handleData = async () => {
         const { navigate } = this.props.navigation;
+        const text = this.state.text
+        // console.log(text);
+        try {
+            // selectedList.push({name: text});
+            // console.log(selectedList);
+            await AsyncStorage.setItem(text, "dit is de info.");
+        } catch (error) {
+            // Error saving data
+        }
+        navigate("Reizen");
     };
 
     handleDelete = item => {
@@ -57,6 +71,8 @@ export default class ReisToevoegenScreen2 extends React.Component {
 
     render() {
         const { navigate } = this.props.navigation;
+        selectedList = this.props.navigation.state.params.selectedList;
+        // console.log(txt);
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>Nieuwe reis</Text>
@@ -72,6 +88,8 @@ export default class ReisToevoegenScreen2 extends React.Component {
                 <TextInput
                     style={styles.textInput}
                     placeholder={"Mijn reis"}
+                    onChangeText={(text) => this.setState({text})}
+                    value={this.state.text}
                 />
 
                 <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 60 }} >

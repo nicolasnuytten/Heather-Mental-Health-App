@@ -57,7 +57,7 @@
         "tags": "gezondheid",
         "intro": "",
         "time": "5min.",
-        "rate": "1",
+        "rate": "./../assets/images/stars_1.png",
         "category": "Focus"
       },
       {
@@ -217,7 +217,7 @@
         "tags": "Relaties, intiem",
         "intro": "Deze oefening is een verbindende maar tegelijkertijd intimiderende ervaring. Zeker als je het niet gewend bent in elkaars ogen te kijken. Hoewel deze oefening soms op de lachspieren kan werken is het toch een serieuze opdracht die vele emoties kan losmaken en jullie dichter bij elkaar brengen! Druk op start en kijk elkaar diep in de ogen…",
         "time": "5min.",
-        "rate": "1",
+        "rate": "2",
         "category": "Leven"
       }
     ]

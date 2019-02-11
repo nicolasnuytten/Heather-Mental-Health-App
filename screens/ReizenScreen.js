@@ -4,15 +4,42 @@ import { Icon } from "react-native-elements";
 import { createStackNavigator, createAppNavigator } from "react-navigation";
 import data from "../assets/data/data.json";
 import { bold } from 'ansi-colors';
-//import { url } from 'inspector';
+import { AsyncStorage } from 'react-native';
 
+let oefList = [];
 export default class ReizenScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      oefList: [],
+    };
+  }
+
   static navigationOptions = {
     header: null,
   };
+  componentDidMount = async() => {
+    // this.setState({oefList:[]})
+    // await AsyncStorage.clear();
+    console.log(oefList)
+      await AsyncStorage.getAllKeys().then((value) => {
+        value.map( item => {
+          if (!item.startsWith('firebase')){
+            console.log(item);
+            oefList.push(value);
+            this.setState({ oefList })
+          }
+        })
+        // console.log(value);
+
+      });
+  };
+
+  componentDidUpdate = () => {
+    console.log("component did update!")
+  };
 
   render() {
-    // console.log(data);
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
@@ -33,6 +60,9 @@ export default class ReizenScreen extends React.Component {
 
         <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 60 }} >
           <ScrollView>
+            {oefList.map( oef => (
+              <Text key={oef}>{oef}</Text>
+            ))}
             <View style={styles.cards}>
               {data.reizen.reizen.map(reis => (
                 <TouchableOpacity onPress={() => navigate("ReisDetail")} key={reis.id}>

@@ -3,7 +3,7 @@ import { View, ImageBackground, ScrollView, Image, StyleSheet, Text, TextInput, 
 import data from "../assets/data/data.json";
 import { bold } from 'ansi-colors';
 
-const selectedList = [];
+let selectedList = [];
 // const maximum = 7;
 // const number = 0;
 
@@ -21,26 +21,29 @@ export default class ReisToevoegenScreen extends React.Component {
         tabBarVisible: false,
     };
 
+    componentDidMount = () => {
+        selectedList = [];
+        console.log("cleared list")
+    };
+
     handleSelect = (item) => {
         console.log(item);
         if (selectedList.includes(item)) {
             index = selectedList.indexOf(item);
             selectedList.splice(index, 1);
             //this.setState({ active: "none" });
+            console.log("Verwijderen");
         } else {
             selectedList.push(item);
             //this.setState({ active: "" });
+            console.log("Toevoegen");
         }
 
-        console.log(selectedList);
+        // console.log(selectedList);
         this.setState({
             selected: selectedList
         })
     };
-
-    // handleData = () => {
-
-    // };
 
     render() {
         const { navigate } = this.props.navigation;
@@ -51,14 +54,14 @@ export default class ReisToevoegenScreen extends React.Component {
                     <TouchableOpacity style={styles.arrow} onPress={() => navigate("Reizen")}>
                         <Image source={require("./../assets/images/back_arrow.png")} />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigate("ReisToevoegen2")}>
+                    <TouchableOpacity onPress={() => navigate("ReisToevoegen2", {selectedList})}>
                         <Text style={styles.buttonText}>Verder</Text>
                     </TouchableOpacity>
                 </View>
                 <Text style={styles.subTitle}>Selecteer oefeningen voor je reis</Text>
                 <TextInput
                     style={styles.textInput}
-                    placeholder={"Stress, ontspanning,..."}
+                    placeholder={"Zoek naar oefeningen..."}
                 />
 
                 <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 60 }} >

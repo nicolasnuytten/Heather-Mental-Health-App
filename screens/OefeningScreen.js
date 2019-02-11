@@ -34,7 +34,7 @@ export default class OefeningScreen extends React.Component {
           <ScrollView>
             <View style={styles.cards}>
               {data.reizen.oefening.map(item => (
-                <TouchableOpacity style={{ width: '50%' }} key={item.id} onPress={() => navigate("OefeningDetail", {screen: "Oefening"})}>
+                <TouchableOpacity style={{ width: '50%' }} key={item.id} onPress={() => navigate("OefeningDetail", {screen: "Oefening", item})}>
                   <View style={styles.card}>
                     <View>
                       <Text style={styles.cardName}>{item.name}</Text>

@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Image, ImageBackground } from 'react-native';
-import { Svg } from "expo";
-const { Rect, G, Path, Mask, } = Svg;
-import EmptyState from '../components/EmptyState';
+// import { Svg } from "expo";
+// const { Rect, G, Path, Mask, } = Svg;
 
 import firebase from "firebase";
 require("firebase/firestore");
@@ -112,7 +111,7 @@ export default class Homescreen extends React.Component {
           <Text style={styles.reizenTitle}>Mijn reizen</Text>
           <View style={styles.reizenContainer}>
             <Text style={[styles.text, styles.donkerBlauw]}>Je hebt nog geen reizen gemaakt, eens proberen?</Text>
-            <TouchableOpacity style={styles.button} onPress={() => navigate("Reizen")}>
+            <TouchableOpacity style={styles.button} onPress={() => navigate("ReisToevoegen")}>
               <Text style={styles.buttonText}>Reis maken</Text>
             </TouchableOpacity>
           </View>

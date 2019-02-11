@@ -11,6 +11,7 @@ export default class OefeningDetailScreen extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
         const screen = this.props.navigation.state.params.screen;
+        const item = this.props.navigation.state.params.item;
         return (
             <View style={styles.container}>
                 <TouchableOpacity style={styles.arrow} onPress={() => navigate(screen)}>
@@ -22,26 +23,32 @@ export default class OefeningDetailScreen extends React.Component {
                         <Text style={styles.buttonText}>Start</Text>
                     </TouchableOpacity>
                     <ScrollView style={styles.oefeningContainer}>
-                        <Text style={styles.title}>Gefocused ademhalen</Text>
+                        <Text style={styles.title}>{item.name}</Text>
                         <View style={styles.infoContainer}>
                             <View style={{ flexDirection: "row", paddingBottom: 20 }}>
                                 <View>
                                     <Text style={styles.subTitle}>Moeilijkheidsgraad</Text>
-                                    <Image source={require("./../assets/images/stars_1.png")}></Image>
+                                    <Image source={require('./../assets/images/stars_1.png')} alt={"Rating"}></Image>
                                 </View>
                                 <View style={{ paddingLeft: 60 }}>
                                     <Text style={styles.subTitle}>Tijd</Text>
-                                    <Text style={[styles.text, styles.orange]}>5min</Text>
+                                    <Text style={[styles.text, styles.orange]}>{item.time}</Text>
                                 </View>
                             </View>
                             <Text style={styles.subTitle}>Tags</Text>
-                            <Text style={[styles.text, styles.orange]}>Yoga, concentratie</Text>
+                            <Text style={[styles.text, styles.orange]}>{item.tags}</Text>
                         </View>
                         <Text style={styles.subTitle}>Informatie</Text>
-                        <Text style={[styles.text, styles.intro]}>De boomhouding is een basishouding binnen yoga en bevorderd je concentratie!</Text>
+                        <Text style={[styles.text, styles.intro]}>{item.intro}</Text>
                         <View>
-                            <Text style={styles.stepTitle}>Stap 1</Text>
-                            <Text style={styles.text}>Ga rechtop staan en verdeel je gewicht over beide voeten zodat je stabiel staat.</Text>
+                            {item.steps.map(step => (
+                                <View key={item.id}>
+                                    <Text style={styles.stepTitle}>Stap 1</Text>
+                                    <Text style={styles.text}>Ga rechtop staan en verdeel je gewicht over beide voeten zodat je stabiel staat.</Text>
+                                </View>
+                            ))}
+
+                            
                         </View>
 
                     </ScrollView>
