@@ -17,61 +17,15 @@ var config = {
 firebase.initializeApp(config);
 let db = firebase.firestore();
 let uid;
-let wolkje;
-let slider1 = 0;
-
-firebase.auth().signInAnonymously().catch(function (error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  console.log(errorCode, errorMessage);
-
-});
-
-firebase.auth().onAuthStateChanged(function (user) {
-  if (user) {
-    // User is signed in.
-    var isAnonymous = user.isAnonymous;
-    uid = user.uid;
-    console.log("logged in", uid);
-
-    const today = new Date();
-    let d = today.getDate();
-    let m = today.getMonth() + 1;
-    if (d < 10) {
-      d = '0' + d;
-    }
-    if (m < 10) {
-      m = '0' + m;
-    }
-    const ref = db.collection(uid);
-    ref.where("uid", "==", uid).where("date", "==", `${d}/${m}`)
-      .get()
-      .then(function (querySnapshot) {
-        wolkje = true;
-        querySnapshot.forEach(function (doc) {
-          console.log(doc.id, " => ", doc.data());
-          console.log(doc.data().slider1);
-          slider1 = doc.data().slider1.value;
-          console.log(slider1)
-        });
-      })
-      .catch(function (error) {
-        console.log("Error getting documents: ", error);
-      });
-
-
-  } else {
-    // User is signed out.
-    console.log("logged out");
-  }
-});
+// let wolkje;
+// let slider1 = 0;
 
 export default class Homescreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      slider1: slider1,
+      wolkje: false,
+      slider1: 50,
       slider2: 50,
       slider3: 50,
       tags1: [],
@@ -82,8 +36,58 @@ export default class Homescreen extends React.Component {
     header: null,
   };
 
+  componentDidMount = () => {
+
+    firebase.auth().signInAnonymously().catch(function (error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+
+    });
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        var isAnonymous = user.isAnonymous;
+        uid = user.uid;
+        console.log("logged in", uid);
+
+        const today = new Date();
+        let d = today.getDate();
+        let m = today.getMonth() + 1;
+        if (d < 10) {
+          d = '0' + d;
+        }
+        if (m < 10) {
+          m = '0' + m;
+        }
+        console.log(uid);
+        const ref = db.collection(uid);
+        ref.where("uid", "==", uid).where("date", "==", `${d}/${m}`)
+          .get()
+          .then(function (querySnapshot) {
+            console.log("Data loaded!")
+            querySnapshot.forEach(function (doc) {
+              console.log(doc.id, " => ", doc.data());
+              console.log(doc.data().slider1);
+              value = doc.data().slider1.value;
+              // console.log(slider1);
+              this.setState({ slider1: value })
+              this.setState({ wolkje: true });
+            });
+          })
+          .catch(function (error) {
+            console.log("Error getting documents: ", error);
+          });
+      } else {
+        // User is signed out.
+        console.log("logged out");
+      }
+    });
+    
+  };
+
   render() {
-    console.log(slider1);
     const { navigate } = this.props.navigation;
     return <View style={{ backgroundColor: '#BDE2F6', flex: 1 }}>
       <ImageBackground source={require("./../assets/images/background_mountains_faded.png")} style={{ width: '100%', height: '100%' }}>
@@ -100,8 +104,8 @@ export default class Homescreen extends React.Component {
               <Image source={require("./../assets/images/profile_icon.png")} />
             </TouchableOpacity>
           </View>
-
-          {wolkje ? <Text>{slider1}</Text> : <View style={styles.wolkContainer}>
+          {console.log(this.state.wolkje)}
+          {this.state.wolkje ? <Text>{this.state.slider1}</Text> : <View style={styles.wolkContainer}>
             <Text style={[styles.text, styles.donkerBlauw]}>Hoe voel je je vandaag?</Text>
             <TouchableOpacity style={styles.button} onPress={() => navigate("CreateMood", { uid })}>
               <Text style={styles.buttonText}>Vul in</Text>

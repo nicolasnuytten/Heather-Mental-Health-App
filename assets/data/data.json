@@ -55,9 +55,9 @@
         "id": "01",
         "name": "Gefocust ademhalen",
         "tags": "gezondheid",
-        "intro": "",
+        "intro": "Gefocust ademhalen of een bepaald ritme om te rust te bekomen.",
         "time": "5min.",
-        "rate": "./../assets/images/stars_1.png",
+        "rate": "1",
         "category": "Focus"
       },
       {
@@ -72,23 +72,23 @@
           },
           {
             "step": "2",
-            "intruction": "Plaats je linkervoet tegen het gestrekte rechterbeen, en zoek je balans. Naarmate je de oefening beter beheerst kun je de voetzool steeds hoger tegen het gestrekte been laten leunen."
+            "instruction": "Plaats je linkervoet tegen het gestrekte rechterbeen, en zoek je balans. Naarmate je de oefening beter beheerst kun je de voetzool steeds hoger tegen het gestrekte been laten leunen."
           },
           {
             "step": "3",
-            "intruction": "Maak jezelf lang door helemaal recht te staan. Plaats je handen tegen elkaar in een bid-houding en ontspan je schouders."
+            "instruction": "Maak jezelf lang door helemaal recht te staan. Plaats je handen tegen elkaar in een bid-houding en ontspan je schouders."
           },
           {
             "step": "4",
-            "intruction": "Span de spieren van je gestrekte been aan. Houd de heupen recht en breng de linkerknie naar buiten."
+            "instruction": "Span de spieren van je gestrekte been aan. Houd de heupen recht en breng de linkerknie naar buiten."
           },
           {
             "step": "5",
-            "intruction": "Adem rustig en diep. Probeerde houding voor 30 seconden vol te houden."
+            "instruction": "Adem rustig en diep. Probeerde houding voor 30 seconden vol te houden."
           },
           {
             "step": "6",
-            "intruction": "Na 30 seconden wissel je van standbeen."
+            "instruction": "Na 30 seconden wissel je van standbeen."
           }
         ],
         "time": "1min.",
@@ -107,23 +107,23 @@
           },
           {
             "step": "2",
-            "intruction": "Buig door je knieën en houd je rug recht."
+            "instruction": "Buig door je knieën en houd je rug recht."
           },
           {
             "step": "3",
-            "intruction": "Breng je rechterbeen over je linkerbeen, daarna haak je je linkervoet onder je rechterbeen."
+            "instruction": "Breng je rechterbeen over je linkerbeen, daarna haak je je linkervoet onder je rechterbeen."
           },
           {
             "step": "4",
-            "intruction": "Kruis je linker elleboog over je rechter elleboog en breng je handpalmen samen."
+            "instruction": "Kruis je linker elleboog over je rechter elleboog en breng je handpalmen samen."
           },
           {
             "step": "5",
-            "intruction": "Adem rustig en diep. Probeerde houding voor 30 seconden vol te houden."
+            "instruction": "Adem rustig en diep. Probeerde houding voor 30 seconden vol te houden."
           },
           {
             "step": "6",
-            "intruction": "Na 30 seconden wissel je de houding."
+            "instruction": "Na 30 seconden wissel je de houding."
           }
         ],
         "time": "1min.",
@@ -151,15 +151,15 @@
           },
           {
             "step": "2",
-            "intruction": "Als de timer af gaat neem je een korte pauze van 5min. Ga even wandelen, maak een koffie, … doe iets dat totaal niks met je taak te maken heeft."
+            "instruction": "Als de timer af gaat neem je een korte pauze van 5min. Ga even wandelen, maak een koffie, … doe iets dat totaal niks met je taak te maken heeft."
           },
           {
             "step": "3",
-            "intruction": "Deze twee stappen stellen één pomodoro voor, als  4 pomodoros hebt gedaan mag je eens een langere pauze van 20min nemen."
+            "instruction": "Deze twee stappen stellen één pomodoro voor, als  4 pomodoros hebt gedaan mag je eens een langere pauze van 20min nemen."
           },
           {
             "step": "4",
-            "intruction": "Dit herhaal je zo vaak je wil, tot je de klus geklaard hebt!"
+            "instruction": "Dit herhaal je zo vaak je wil, tot je de klus geklaard hebt!"
           }
         ],
         "time": "2u15min.",
@@ -196,15 +196,15 @@
           },
           {
             "step": "2",
-            "intruction": "B luistert naar A zonder te discussiëren en verplaatst zich in de schoenen van A."
+            "instruction": "B luistert naar A zonder te discussiëren en verplaatst zich in de schoenen van A."
           },
           {
             "step": "3",
-            "intruction": "Daarna vat B de eerste notitie van A samen en A bevestigt of B dit correct heeft begrepen. Zo niet herhaald A zijn/haar notitie."
+            "instruction": "Daarna vat B de eerste notitie van A samen en A bevestigt of B dit correct heeft begrepen. Zo niet herhaald A zijn/haar notitie."
           },
           {
             "step": "4",
-            "intruction": "Zo gaan jullie alle notities af en wisselen jullie van plaats eens klaar."
+            "instruction": "Zo gaan jullie alle notities af en wisselen jullie van plaats eens klaar."
           }
         ],
         "time": "15min.",

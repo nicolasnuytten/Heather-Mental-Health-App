@@ -35,6 +35,7 @@ export default class CreateMood extends React.Component {
   };
 
   handleTag = (tag) => {
+    console.log(tag);
     tagsList.push(tag);
     this.setState({
       tags: tagsList
@@ -58,6 +59,7 @@ export default class CreateMood extends React.Component {
 
     console.log(this.state.slider1);
     console.log("Adding 2 DB");
+    console.log(uid);
     db.collection(uid)
       .add({
         uid: `${uid}`,

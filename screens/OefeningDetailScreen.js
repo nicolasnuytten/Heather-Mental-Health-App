@@ -41,12 +41,13 @@ export default class OefeningDetailScreen extends React.Component {
                         <Text style={styles.subTitle}>Informatie</Text>
                         <Text style={[styles.text, styles.intro]}>{item.intro}</Text>
                         <View>
-                        {item ? null :item.steps.map(step => (
-                                <View key={item.step}>
-                                    <Text style={styles.stepTitle}>{step.step}</Text>
+                        {console.log(item.steps)}
+                        {item.steps ? item.steps.map(step => (
+                                <View key={step.step}>
+                                    <Text style={styles.stepTitle}>Stap {step.step}:</Text>
                                     <Text style={styles.text}>{step.instruction}</Text>
                                 </View>
-                            )) }
+                        )) : <View></View> }
 
                             
                         </View>
@@ -75,7 +76,8 @@ const styles = StyleSheet.create({
         width: "100%"
     },
     oefeningContainer: {
-        margin: 20
+        margin: 20,
+        marginBottom: 250
     },
     title: {
         color: "#F2994A",

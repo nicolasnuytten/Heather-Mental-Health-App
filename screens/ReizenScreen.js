@@ -64,7 +64,7 @@ export default class ReizenScreen extends React.Component {
               <Text key={oef}>{oef}</Text>
             ))}
             <View style={styles.cards}>
-              {data.reizen.reizen.map(reis => (
+              {/* {data.reizen.reizen.map(reis => (
                 <TouchableOpacity onPress={() => navigate("ReisDetail")} key={reis.id}>
                   <View style={styles.card}>
                     <Text style={styles.cardName}>{reis.name}</Text>
@@ -85,7 +85,7 @@ export default class ReizenScreen extends React.Component {
                     </View>
                   </View>
                 </TouchableOpacity>
-              ))}
+              ))} */}
             </View>
           </ScrollView>
         </ImageBackground>
