@@ -1,11 +1,68 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableHighlight, Image, Button } from 'react-native';
 import { Calendar } from "react-native-calendars";
+import Cloud from "../components/Cloud";
 
+let uid;
+import firebase from "firebase";
+require("firebase/firestore");
+let db = firebase.firestore();
 export default class Moodscreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      slider1: 50,
+      slider2: 50,
+      slider3: 50,
+      tags1: [],
+      tags2: []
+    }
+  }
+
   static navigationOptions = {
     header: null,
   };
+
+  componentWillMount = () => {
+
+    const today = new Date();
+    let y = today.getFullYear();
+    let m = today.getMonth() +1;
+    let d = today.getDate();
+    if (d < 10) {
+      d = '0' + d;
+    }
+    if (m < 10) {
+      m = '0' + m;
+    }
+    // console.log(`${y}-${m}-${d}`);
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        var isAnonymous = user.isAnonymous;
+        uid = user.uid;
+        console.log("logged in", uid);
+      }
+      const ref = db.collection(uid);
+      ref.where("uid", "==", uid).where("date", "==", `${d}/${m}`)
+      .get()
+      .then(querySnapshot => {
+      console.log("Data loaded!")
+      querySnapshot.forEach(doc => {
+      // console.log(doc.id, " => ", doc.data());
+      // console.log(doc.data().slider1);
+      dataSlider1 = doc.data().slider1;
+      dataSlider2 = doc.data().slider2;
+      dataSlider3 = doc.data().slider3;
+      dataTags1 = doc.data().tags1;
+      dataTags2 = doc.data().tags2;
+      this.setState({
+      slider1: dataSlider1, slider2: dataSlider2, slider3: dataSlider3, tags1: dataTags1, tags2: dataTags2});
+      });
+    })
+    });
+
+    } 
 
   render() {
     const today = new Date();
@@ -21,12 +78,12 @@ export default class Moodscreen extends React.Component {
     // console.log(`${y}-${m}-${d}`);
     return <View style={styles.container}>
         <View style={styles.mood}>
-          <Text>Wolkje</Text>
+          <Cloud style={styles.wolkContainer} slider1={this.state.slider1} slider2={this.state.slider2} slider3={this.state.slider3} tags1={this.state.tags1} tags2={this.state.tags2} />
         </View>
         <Calendar style={styles.calendar}
-        // Collection of dates that have to be marked. Default = {}
         maxDate={`${y}-${m}-${d}`}
-        onDayPress={(day) => { console.log('selected day', day) }}
+        onDayPress={(day) => console.log(day)}
+        // markedDates={{ ...this.state.markedDates, [this.state.selected_date]: { selected: true, disableTouchEvent: true, } }}
         markedDates={{
           '2019-01-08': { marked: true, dotColor: 'orange'},
           '2019-01-09': { marked: true, dotColor: 'orange'},
