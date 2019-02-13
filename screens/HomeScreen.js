@@ -138,8 +138,8 @@ export default class Homescreen extends React.Component {
         </View>
         <View style={{zIndex: -2}}>
           <Svg width="375" height="372" viewBox="0 0 375 372" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <Path fill-rule="evenodd" clip-rule="evenodd" d="M126.99 0L28.0307 65.4892L0 66.3792L0.381759 86.6755H1.12581L1.82446 197H0V373H377V197H376V189.117L272.818 93L227.81 148.605L175.003 70.5562L176 70.785L139.096 17.4849L127.266 0L127.111 0.176039L126.99 0Z" fill={`hsla(201, ${this.state.slider3}%, 25%, 0.3)`}/>
-            <Path fill-rule="evenodd" clip-rule="evenodd" d="M201 239.243L250.01 158L348.969 233.164L377 234.186L376.618 257.48H375.987L375.919 374.96L120 375L120.601 374H1V317.797L103.181 210L103.234 210.074L103.303 210L103.675 210.521L103.615 210L166.437 297.77L201.746 239.046L201 239.243Z" fill={`hsla(201, ${this.state.slider3}%, 35%, 0.1)`}/>
+            <Path fill-rule="evenodd" clip-rule="evenodd" d="M126.99 0L28.0307 65.4892L0 66.3792L0.381759 86.6755H1.12581L1.82446 197H0V373H377V197H376V189.117L272.818 93L227.81 148.605L175.003 70.5562L176 70.785L139.096 17.4849L127.266 0L127.111 0.176039L126.99 0Z" fill={`hsla(201, ${this.state.slider3}%, 25%, 0.03)`}/>
+            <Path fill-rule="evenodd" clip-rule="evenodd" d="M201 239.243L250.01 158L348.969 233.164L377 234.186L376.618 257.48H375.987L375.919 374.96L120 375L120.601 374H1V317.797L103.181 210L103.234 210.074L103.303 210L103.675 210.521L103.615 210L166.437 297.77L201.746 239.046L201 239.243Z" fill={`hsla(201, ${this.state.slider3}%, 35%, 0.05)`}/>
           </Svg>
 
         </View>
