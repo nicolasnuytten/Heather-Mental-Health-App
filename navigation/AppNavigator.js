@@ -29,5 +29,11 @@ export default createAppContainer(
     Test: TestScreen,
     ReisDetail: ReisDetailScreen,
     AdemhalenOefening: AdemhalenOefeningScreen,
+  },
+  {
+    tabBarOptions: {
+        activeTintColor: 'tomato',
+        inactiveTintColor: 'gray',
+      },
   })
 );

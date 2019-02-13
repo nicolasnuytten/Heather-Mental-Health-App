@@ -55,7 +55,8 @@ export default class CreateMood2 extends React.Component {
     
     tagsList = [];
     console.log("Adding 2 DB");
-    navigate("Home");
+
+    navigate("Home", {update: true});
   };
 
   render() {

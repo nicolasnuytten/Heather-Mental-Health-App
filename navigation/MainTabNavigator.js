@@ -1,6 +1,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
@@ -23,10 +24,12 @@ const HomeStack = createStackNavigator({
 
 HomeStack.navigationOptions = {
   tabBarLabel: "Home",
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
+  tabBarIcon: ({ focused, tintColor }) => (
+    <Icon
       focused={focused}
-      name={Platform.OS === "ios" ? "ios-home" : "md-home"}
+      name={"cloud"}
+      color={tintColor}
+      size={20}
     />
   )
 };
@@ -36,11 +39,13 @@ const MoodStack = createStackNavigator({
 });
 
 MoodStack.navigationOptions = {
-  tabBarLabel: "Mood",
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
+  tabBarLabel: "Overzicht",
+  tabBarIcon: ({ focused, tintColor }) => (
+    <Icon
       focused={focused}
-      name={Platform.OS === "ios" ? "ios-thunderstorm" : "md-cloud"}
+      name={"calendar"}
+      color={tintColor}
+      size={20}
     />
   )
 };
@@ -53,10 +58,12 @@ const ReizenStack = createStackNavigator({
 
 ReizenStack.navigationOptions = {
   tabBarLabel: "Reizen",
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
+  tabBarIcon: ({ focused, tintColor }) => (
+    <Icon
       focused={focused}
-      name={Platform.OS === "ios" ? "ios-airplane" : "md-airplane"}
+      name={"map"}
+      color={tintColor}
+      size={20}
     />
   )
 };
