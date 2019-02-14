@@ -23,7 +23,6 @@ export default class ReisToevoegenScreen extends React.Component {
 
     componentDidMount = () => {
         selectedList = [];
-        console.log("cleared list")
     };
 
     handleSelect = (item) => {
@@ -47,6 +46,7 @@ export default class ReisToevoegenScreen extends React.Component {
 
     render() {
         const { navigate } = this.props.navigation;
+        const list = this.state.selected
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>Nieuwe reis</Text>
@@ -54,7 +54,7 @@ export default class ReisToevoegenScreen extends React.Component {
                     <TouchableOpacity style={styles.arrow} onPress={() => navigate("Reizen")}>
                         <Image source={require("./../assets/images/back_arrow.png")} />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigate("ReisToevoegen2", {selectedList})}>
+                    <TouchableOpacity onPress={() => navigate("ReisToevoegen2", {list})}>
                         <Text style={styles.buttonText}>Verder</Text>
                     </TouchableOpacity>
                 </View>

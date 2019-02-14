@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 import { Svg } from "expo";
 const { Rect, G, Path, Mask, } = Svg;
+
 
 import Cloud from "../components/Cloud";
 import firebase from "firebase";
@@ -35,7 +36,6 @@ export default class Homescreen extends React.Component {
     header: null,
   };
 
-
   componentWillMount = () => {
 
     firebase.auth().signInAnonymously().catch(error => {
@@ -45,7 +45,6 @@ export default class Homescreen extends React.Component {
       console.log(errorCode, errorMessage);
 
     });
-
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         var isAnonymous = user.isAnonymous;
@@ -61,12 +60,11 @@ export default class Homescreen extends React.Component {
         if (m < 10) {
           m = '0' + m;
         }
-        console.log(uid);
         const ref = db.collection(uid);
         ref.where("uid", "==", uid).where("date", "==", `${d}/${m}`)
           .get()
           .then(querySnapshot => {
-            console.log("Data loaded!")
+            // console.log("Data loaded!")
             querySnapshot.forEach(doc => {
               // console.log(doc.id, " => ", doc.data());
               // console.log(doc.data().slider1);

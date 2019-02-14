@@ -12,31 +12,56 @@ export default class ReizenScreen extends React.Component {
     super(props);
     this.state = {
       oefList: [],
+      reisList: []
     };
   }
 
   static navigationOptions = {
     header: null,
   };
-  // componentDidMount = async() => {
-  //   // this.setState({oefList:[]})
-  //   // await AsyncStorage.clear();
-  //   console.log(oefList)
-  //     await AsyncStorage.getAllKeys().then((value) => {
-  //       value.map( item => {
-  //         if (!item.startsWith('firebase')){
-  //           console.log(item);
-  //           oefList.push(value);
-  //           this.setState({ oefList })
-  //         }
-  //       })
-  //       // console.log(value);
+  componentDidMount = async() => {
+    // this.setState({oefList:[]})
+    // AsyncStorage.clear();  
+    oefList = [];
+      await AsyncStorage.getAllKeys()
+      .then(keys => {
+        keys.map( item => {
+          if (!item.includes('firebase')){
+            // console.log("name", item);
+            AsyncStorage.getItem(item)
+            .then(req => JSON.parse(req))
+            .then(reisList => {
+              // console.log(reisList); 
+              this.setState({reisList});
 
-  //     });
+            })
+            .catch(error => console.log('error!'));
+            // oefList.push(item);
+
+            // oefList.forEach( item => {
+            //   console.log(item)
+            // } )
+            // this.setState({ oefList })
+            // console.log(this.state.oefList);
+          }
+        })
+        // console.log(value);
+      });
+    // const textArray = this.props.navigation.state.params.textArray;
+    // textArray.forEach(text => {
+    //   AsyncStorage.getItem(text)
+    //   .then(req => JSON.parse(req))
+    //   .then(json => console.log("resultaat", json[0].id))
+    //   .catch(error => console.log('error!'));
+    // })      
+  };
+
+  // componentDidUpdate = () => {
+  //   console.log("component did update!")
   // };
 
-  componentDidUpdate = () => {
-    console.log("component did update!")
+  removeReis = (oef) => {
+    console.log(oef);
   };
 
   render() {
@@ -60,8 +85,26 @@ export default class ReizenScreen extends React.Component {
 
         <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 60 }} >
           <ScrollView>
-            {oefList.map( oef => (
-              <Text key={oef}>{oef}</Text>
+            {this.state.reisList.map( oef => (
+              <TouchableOpacity onLongPress={(oef) => this.removeReis(oef)} onPress={() => navigate("ReisDetail")} style={{margin: 10, backgroundColor: '#D6F1FF', padding: 15, borderRadius:10}} key={oef.id}>
+              <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                <Text style>{oef.name}</Text>
+                <Text>{oef.category}</Text>
+              </View>
+              <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                <Text>Progressie: 0/7</Text>
+                <Text>5d. geleden gestart</Text>
+              </View>
+              <View style={styles.progressBar}>
+                    {
+                      (Platform.OS === 'android')
+                        ?
+                        (<ProgressBarAndroid styleAttr="Horizontal" progress={0} indeterminate={false} />)
+                        :
+                        (<ProgressViewIOS progress={0} />)
+                    }
+                  </View>
+              </TouchableOpacity>
             ))}
             <View style={styles.cards}>
               {/* {data.reizen.reizen.map(reis => (

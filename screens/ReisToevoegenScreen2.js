@@ -50,15 +50,20 @@ export default class ReisToevoegenScreen2 extends React.Component {
     handleData = async () => {
         const { navigate } = this.props.navigation;
         const text = this.state.text
+        const list = this.props.navigation.state.params.list;
         // console.log(text);
         try {
-            // selectedList.push({name: text});
-            // console.log(selectedList);
-            await AsyncStorage.setItem(text, "dit is de info.");
+            let textArray = [];
+            textArray.push(text);
+            // console.log( "dit is het...",list);
+            await AsyncStorage.setItem(text, JSON.stringify(list))
+            .then(json => console.log('success!'))
+            .catch(error => console.log('error!'));
+            navigate("Reizen", {textArray});
         } catch (error) {
             // Error saving data
+            console.alert("Error, coudn't set item.")
         }
-        navigate("Reizen");
     };
 
     handleDelete = item => {
@@ -71,7 +76,7 @@ export default class ReisToevoegenScreen2 extends React.Component {
 
     render() {
         const { navigate } = this.props.navigation;
-        selectedList = this.props.navigation.state.params.selectedList;
+        selectedList = this.props.navigation.state.params.list;
         // console.log(txt);
         return (
             <View style={styles.container}>

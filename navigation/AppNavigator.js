@@ -2,6 +2,7 @@ import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
+import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import CreateMoodScreen from "../screens/CreateMoodScreen";
 import CreateMoodScreen2 from "../screens/CreateMoodScreen2";
@@ -20,6 +21,7 @@ export default createAppContainer(
     // You could add another route here for authentication.
     // Read more at https://reactnavigation.org/docs/en/auth-flow.html
     Main: MainTabNavigator,
+    Home: HomeScreen,
     Profile: ProfileScreen,
     CreateMood: CreateMoodScreen,
     CreateMood2: CreateMoodScreen2,
