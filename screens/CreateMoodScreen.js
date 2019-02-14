@@ -96,11 +96,11 @@ export default class CreateMood extends React.Component {
           </TouchableOpacity>
         </View>
         {/* <Cloud style={styles.wolkContainer} slider1={this.state.slider1} slider2={this.state.slider2} slider3={this.state.slider3} tags1={this.state.tags1} tags2={this.state.tags2} />    */}
-        <View style={{marginLeft: 20, marginRight: 20}}>
+        <View style={{ marginLeft: 20, marginRight: 20 }}>
           <Text style={styles.title}>Hoe voel je je?</Text>
-          <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text>Goed</Text>
+          <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text>Slecht</Text>
+            <Text>Goed</Text>
           </View>
           <Slider
             step={1}
@@ -113,13 +113,13 @@ export default class CreateMood extends React.Component {
               })
             }
           />
-          <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginTop: 50}}>
-          <TouchableOpacity style={styles.button} onPress={this.handleButtonPos}>
-            <Text style={styles.buttonText}>Positief</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={this.handleButtonNeg}>
-            <Text style={styles.buttonText}>Negatief</Text>
-          </TouchableOpacity>
+          <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginTop: 50 }}>
+            <TouchableOpacity style={styles.button} onPress={this.handleButtonPos}>
+              <Text style={styles.buttonText}>Positief</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={this.handleButtonNeg}>
+              <Text style={styles.buttonText}>Negatief</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.tagList}>
             {this.state.tab === "positive"
@@ -144,104 +144,104 @@ export default class CreateMood extends React.Component {
 }
 
 const styles = StyleSheet.create({
-container: {
-        flex: 1,
-        backgroundColor: "#BDE2F6",
-        paddingTop: 30
-    },
-    selected: {
-        fontWeight: "bold"
-    },
-    navHeader: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignContent: "center",
-        marginTop: 0,
-        paddingLeft: 20,
-        paddingRight: 20,
-        paddingBottom: 20
-    },
-    title: {
-        fontSize: 22,
-        color: "#104664",
-        fontWeight: "bold",
-        alignSelf: "center"
-    },
-    subTitle: {
-        fontSize: 20,
-        color: "#104664",
-        alignSelf: "center"
-    },
-    textInput: {
-        backgroundColor: "#86BCDA",
-        margin: 20,
-        borderRadius: 20,
-        padding: 10,
-        color: "#BDE2F6",
-        fontSize: 16
-    },
-    cards: {
-        flexDirection: "row",
-        flexWrap: "wrap",
-        paddingTop: 10,
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingBottom: 160,
-        height: '100%'
-    },
-    card: {
-        padding: 10,
-        margin: 10,
-        backgroundColor: "#FFF3C1",
-        height: 132,
-        justifyContent: "space-between",
-        borderRadius: 10,
-        position: "relative"
-    },
-    cardName: {
-        fontSize: 20,
-        fontWeight: "bold",
-        color: "#104664"
-    },
-    cardTags: {
-        fontSize: 16,
-        color: "#F2994A"
-    },
-    cardBottom: {
-        flexDirection: "row",
-        justifyContent: "space-between"
-    },
-    cardTime: {
-        fontWeight: "bold"
-    },
-    selectedIcon: {
-        width: 40,
-        height: 40,
-        backgroundColor: "#86BCDA",
-        borderRadius: 20,
-        position: "absolute",
-        zIndex: 100,
-        justifyContent: "center",
-        alignSelf: "flex-end",
-        marginTop: -8,
-        marginRight: -15
-    },
-    selectedText: {
-        alignSelf: "center",
-        fontSize: 20
-    },
-    hidden: {
-        display: "none"
-    },
-    buttonText: {
-        fontSize: 18,
-        color: "#104664"
-    },
-  tag: { 
+  container: {
+    flex: 1,
+    backgroundColor: "#BDE2F6",
+    paddingTop: 30
+  },
+  selected: {
+    fontWeight: "bold"
+  },
+  navHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignContent: "center",
+    marginTop: 0,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 20
+  },
+  title: {
+    fontSize: 22,
+    color: "#104664",
+    fontWeight: "bold",
+    alignSelf: "center"
+  },
+  subTitle: {
+    fontSize: 20,
+    color: "#104664",
+    alignSelf: "center"
+  },
+  textInput: {
+    backgroundColor: "#86BCDA",
+    margin: 20,
+    borderRadius: 20,
+    padding: 10,
+    color: "#BDE2F6",
+    fontSize: 16
+  },
+  cards: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 160,
+    height: '100%'
+  },
+  card: {
     padding: 10,
     margin: 10,
-    display: 'flex', 
-    flexDirection: 'row', 
+    backgroundColor: "#FFF3C1",
+    height: 132,
+    justifyContent: "space-between",
+    borderRadius: 10,
+    position: "relative"
+  },
+  cardName: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#104664"
+  },
+  cardTags: {
+    fontSize: 16,
+    color: "#F2994A"
+  },
+  cardBottom: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  cardTime: {
+    fontWeight: "bold"
+  },
+  selectedIcon: {
+    width: 40,
+    height: 40,
+    backgroundColor: "#86BCDA",
+    borderRadius: 20,
+    position: "absolute",
+    zIndex: 100,
+    justifyContent: "center",
+    alignSelf: "flex-end",
+    marginTop: -8,
+    marginRight: -15
+  },
+  selectedText: {
+    alignSelf: "center",
+    fontSize: 20
+  },
+  hidden: {
+    display: "none"
+  },
+  buttonText: {
+    fontSize: 18,
+    color: "#104664"
+  },
+  tag: {
+    padding: 10,
+    margin: 10,
+    display: 'flex',
+    flexDirection: 'row',
     backgroundColor: '#104664',
     borderRadius: 10
   },
@@ -250,11 +250,11 @@ container: {
     color: '#fff'
   },
   tagList: {
-    display: 'flex', 
-    flexDirection: 'row', 
-    width: '100%', 
-    flexWrap: 'wrap', 
-    justifyContent: 'space-evenly', 
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
     marginTop: 20
   }
 });
