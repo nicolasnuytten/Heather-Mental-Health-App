@@ -13,9 +13,8 @@ export default class Cloud extends React.Component {
   };
 
   render() {
-    const navigate = this.props.navigate;
     const { slider1, slider2, slider3, tags1, tags2 } = this.props;
-    const color = `hsl(0,0%, ${slider1}%)`
+    const color = `hsl(0,0%, ${slider1}%)`;
     return(
     <View>
         <Svg style={{position: 'absolute', zIndex: 3, marginLeft: 100, marginTop: 90, transform: [{scaleX:1.5}, {scaleY: 1.5}]}} width='142' height='77' viewBox='0 0 142 77' fill={color}>

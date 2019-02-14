@@ -22,7 +22,7 @@ export default class ReizenScreen extends React.Component {
   componentDidMount = async() => {
     // this.setState({oefList:[]})
     // AsyncStorage.clear();  
-    oefList = [];
+    // oefList = [];
       await AsyncStorage.getAllKeys()
       .then(keys => {
         keys.map( item => {
@@ -32,7 +32,7 @@ export default class ReizenScreen extends React.Component {
             .then(req => JSON.parse(req))
             .then(reisList => {
               // console.log(reisList); 
-              this.setState({reisList});
+              this.setState({reisList: reisList});
 
             })
             .catch(error => console.log('error!'));

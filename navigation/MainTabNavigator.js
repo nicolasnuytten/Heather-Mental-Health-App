@@ -18,8 +18,6 @@ import OefeningDetailScreen from '../screens/OefeningDetailScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
-  CreateMood: CreateMoodScreen,
-  CreateMood2: CreateMoodScreen2,
 });
 
 HomeStack.navigationOptions = {
