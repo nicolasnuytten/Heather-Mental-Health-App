@@ -104,7 +104,7 @@ export default class CreateMood extends React.Component {
           </View>
           <Slider
             step={1}
-            minimumValue={25}
+            minimumValue={40}
             maximumValue={100}
             value={this.state.slider1}
             onValueChange={val =>
