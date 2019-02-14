@@ -27,7 +27,7 @@ HomeStack.navigationOptions = {
       focused={focused}
       name={"cloud"}
       color={tintColor}
-      size={20}
+      size={22}
     />
   )
 };
@@ -67,7 +67,12 @@ ReizenStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  HomeStack,
   MoodStack,
+  HomeStack,
   ReizenStack
+}, {
+  initialRouteName: 'HomeStack',
+  tabBarOptions: {
+    activeTintColor: '#104664'
+  }
 });
