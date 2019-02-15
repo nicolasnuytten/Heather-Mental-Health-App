@@ -33,6 +33,7 @@ export default class Homescreen extends React.Component {
     };
 
     render() {
+        const item = this.props.navigation.state.params.item;
         const animatedStyle = {
             transform: [{ scale: this.animatedValue }]
         }
@@ -40,7 +41,7 @@ export default class Homescreen extends React.Component {
         return <View style={{ backgroundColor: '#E3F5FF', flex: 1 }}>
             <ImageBackground source={require("./../assets/images/background_oefening.png")} style={{ width: '100%', height: '100%' }}>
                 <View style={styles.container}>
-                    <TouchableOpacity style={styles.arrow} onPress={() => navigate("OefeningDetail")}>
+                    <TouchableOpacity style={styles.arrow} onPress={() => navigate("OefeningDetail", {screen: "Oefening", item})}>
                         <Image source={require("./../assets/images/back_arrow.png")} />
                     </TouchableOpacity>
                     <Text style={styles.title}>Gefocused ademhalen</Text>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View, Text, Image, AsyncStorage } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View, Button, Image, AsyncStorage } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import Onboarding from 'react-native-onboarding-swiper';
@@ -24,12 +24,15 @@ export default class App extends React.Component {
       firstLaunch: true,
     }
   }
+
   render() {
     if (this.state.firstLaunch == true) {
       return <Onboarding
         skipToPage={2}
         bottomBarHeight={40}
         onDone={() => this.setState({firstLaunch: false})}  
+        titleStyles={{ color: 'white', fontWeight: 'bold', fontSize: 24}}
+        subTitleStyles={{ color: '#104664', width: 300}}
         pages={[
         {
           backgroundColor: '#BDE2F6',

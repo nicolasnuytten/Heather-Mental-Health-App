@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Image, AsyncStorage, ScrollView, Platform, ProgressViewIOS } from 'react-native';
 import { Svg } from "expo";
 const { Rect, G, Path, Mask, } = Svg;
 
@@ -29,14 +29,16 @@ export default class Homescreen extends React.Component {
       slider2: 50,
       slider3: 50,
       tags1: [],
-      tags2: []
+      tags2: [],
+      reizen: false,
+      reisList: []
     }
   }
   static navigationOptions = {
     header: null,
   };
 
-  componentWillMount = () => {
+  componentWillMount = async () => {
 
     firebase.auth().signInAnonymously().catch(error => {
       // Handle Errors here.
@@ -86,6 +88,27 @@ export default class Homescreen extends React.Component {
         console.log("logged out");
       }
     })
+    await AsyncStorage.getAllKeys()
+      .then(keys => {
+        keys.map(item => {
+          if (!item.includes('firebase' || item !== " ")) {
+            console.log("name", item);
+            AsyncStorage.getItem(item)
+              .then(req => JSON.parse(req))
+              .then(reisList => {
+                reisList.push({ reisNaam: item });
+                // console.log(item)
+                // console.log(reisList); 
+                this.setState({ reisList: [...this.state.reisList, ...reisList], reizen: true });
+              })
+              .catch(error => {
+                console.log('error');
+                // this.setState({reizen: false});
+              });
+          }
+        })
+      })
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -127,12 +150,39 @@ export default class Homescreen extends React.Component {
           </View>}
 
           <Text style={styles.reizenTitle}>Mijn reizen</Text>
+          {this.state.reizen ? 
+          
+          <ScrollView>
+            {this.state.reisList.map(oef => (
+              <TouchableOpacity onPress={() => navigate("ReisDetail")} style={{ margin: 10, backgroundColor: '#D6F1FF', padding: 15, borderRadius: 10 }} key={Math.random()}>
+                <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                  <Text>{oef.reisNaam}</Text>
+                  <Text>{oef.category}</Text>
+                </View>
+                <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                  <Text>Progressie: 0/7</Text>
+                  <Text>5d. geleden gestart</Text>
+                </View>
+                <View style={styles.progressBar}>
+                  {
+                    (Platform.OS === 'android')
+                      ?
+                      (<ProgressBarAndroid styleAttr="Horizontal" progress={0} indeterminate={false} />)
+                      :
+                      (<ProgressViewIOS progress={0} />)
+                  }
+                </View>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+          :
           <View style={styles.reizenContainer}>
             <Text style={[styles.text, styles.donkerBlauw]}>Je hebt nog geen reizen gemaakt, eens proberen?</Text>
             <TouchableOpacity style={styles.button} onPress={() => navigate("ReisToevoegen")}>
               <Text style={styles.buttonText}>Reis maken</Text>
             </TouchableOpacity>
           </View>
+          }
         </View>
         <View style={{zIndex: -2}}>
           <Svg width="375" height="372" viewBox="0 0 375 372" fill="none" xmlns="http://www.w3.org/2000/svg">

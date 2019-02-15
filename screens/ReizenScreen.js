@@ -6,12 +6,10 @@ import data from "../assets/data/data.json";
 import { bold } from 'ansi-colors';
 import { AsyncStorage } from 'react-native';
 
-let oefList = [];
 export default class ReizenScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      oefList: [],
       reisList: []
     };
   }
@@ -20,46 +18,25 @@ export default class ReizenScreen extends React.Component {
     header: null,
   };
   componentDidMount = async() => {
-    // this.setState({oefList:[]})
+    // this.setState({ reisList: []})
     // AsyncStorage.clear();  
-    // oefList = [];
+      // reisList = [];
       await AsyncStorage.getAllKeys()
       .then(keys => {
-        keys.map( item => {
+        keys.map(item => {
+          // console.log(item);
           if (!item.includes('firebase')){
-            // console.log("name", item);
+            console.log("name", item);
             AsyncStorage.getItem(item)
             .then(req => JSON.parse(req))
             .then(reisList => {
-              // console.log(reisList); 
-              this.setState({reisList: reisList});
-
+              this.setState({ reisList: [...this.state.reisList, ...reisList] })
             })
             .catch(error => console.log('error!'));
-            // oefList.push(item);
-
-            // oefList.forEach( item => {
-            //   console.log(item)
-            // } )
-            // this.setState({ oefList })
-            // console.log(this.state.oefList);
           }
         })
-        // console.log(value);
-      });
-    // const textArray = this.props.navigation.state.params.textArray;
-    // textArray.forEach(text => {
-    //   AsyncStorage.getItem(text)
-    //   .then(req => JSON.parse(req))
-    //   .then(json => console.log("resultaat", json[0].id))
-    //   .catch(error => console.log('error!'));
-    // })      
+      });    
   };
-
-  // componentDidUpdate = () => {
-  //   console.log("component did update!")
-  // };
-
   removeReis = (oef) => {
     console.log(oef);
   };
@@ -86,16 +63,16 @@ export default class ReizenScreen extends React.Component {
         <ImageBackground source={require("./../assets/images/background_cloud.png")} style={{ width: '100%', height: '100%', paddingTop: 60 }} >
           <ScrollView>
             {this.state.reisList.map( oef => (
-              <TouchableOpacity onLongPress={(oef) => this.removeReis(oef)} onPress={() => navigate("ReisDetail")} style={{margin: 10, backgroundColor: '#D6F1FF', padding: 15, borderRadius:10}} key={oef.id}>
-              <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-                <Text style>{oef.name}</Text>
-                <Text>{oef.category}</Text>
-              </View>
-              <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-                <Text>Progressie: 0/7</Text>
-                <Text>5d. geleden gestart</Text>
-              </View>
-              <View style={styles.progressBar}>
+              <TouchableOpacity onPress={() => navigate("ReisDetail")} style={{margin: 10, backgroundColor: '#D6F1FF', padding: 15, borderRadius:10}} key={Math.random()}>
+                <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                  <Text>{oef.name}</Text>
+                  <Text>{oef.category}</Text>
+                  </View>
+                <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                 <Text>Progressie: 0/7</Text>
+                  <Text>5d. geleden gestart</Text>
+                </View>
+                <View style={styles.progressBar}>
                     {
                       (Platform.OS === 'android')
                         ?
@@ -103,33 +80,9 @@ export default class ReizenScreen extends React.Component {
                         :
                         (<ProgressViewIOS progress={0} />)
                     }
-                  </View>
+                </View>
               </TouchableOpacity>
-            ))}
-            <View style={styles.cards}>
-              {/* {data.reizen.reizen.map(reis => (
-                <TouchableOpacity onPress={() => navigate("ReisDetail")} key={reis.id}>
-                  <View style={styles.card}>
-                    <Text style={styles.cardName}>{reis.name}</Text>
-                    <View style={styles.cardProgress}>
-                      <Text style={styles.cardProgressTitles}>
-                        Progressie: {reis.goalsDone}/{reis.goalsTotal}
-                      </Text>
-                      <Text style={styles.cardProgressTitles}>{reis.started} geleden gestart</Text>
-                    </View>
-                    <View style={styles.progressBar}>
-                      {
-                        (Platform.OS === 'android')
-                          ?
-                          (<ProgressBarAndroid styleAttr="Horizontal" progress={.5} indeterminate={false} />)
-                          :
-                          (<ProgressViewIOS progress={.5} />)
-                      }
-                    </View>
-                  </View>
-                </TouchableOpacity>
-              ))} */}
-            </View>
+            )) }
           </ScrollView>
         </ImageBackground>
       </View>

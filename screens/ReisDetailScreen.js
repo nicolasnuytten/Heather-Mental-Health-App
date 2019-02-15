@@ -26,7 +26,7 @@ export default class ReisDetailScreen extends React.Component {
         <ScrollView style={{ flex: 2 }} contentOffset={{ x: 0, y: 500 }}>
           <ImageBackground source={require("./../assets/images/background_mountain.png")} style={styles.backgroundImage} >
             <View>
-              <TouchableOpacity style={[styles.circle, styles.circleDone]} onPress={() => navigate("OefeningDetail", { screen: "ReisDetail" })}>
+              <TouchableOpacity style={[styles.circle, styles.circleDone]}>
                 <Text style={[styles.circleText, styles.circleDoneText]}>1</Text>
               </TouchableOpacity>
               <TouchableOpacity style={[styles.circle, styles.circle2, styles.circleDone]}>
