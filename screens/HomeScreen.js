@@ -91,12 +91,10 @@ export default class Homescreen extends React.Component {
     await AsyncStorage.getAllKeys()
       .then(keys => {
         keys.map(item => {
-          if (!item.includes('firebase' || item !== " ")) {
-            console.log("name", item);
+          if (!item.includes('firebase')) {
             AsyncStorage.getItem(item)
               .then(req => JSON.parse(req))
               .then(reisList => {
-                reisList.push({ reisNaam: item });
                 // console.log(item)
                 // console.log(reisList); 
                 this.setState({ reisList: [...this.state.reisList, ...reisList], reizen: true });
