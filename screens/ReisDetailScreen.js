@@ -17,16 +17,16 @@ export default class ReisDetailScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Icon style={styles.arrow} name="arrow-back" onPress={() => navigate("Reizen")} />    
+          <Icon style={styles.arrow} name="arrow-back" onPress={() => navigate("Reizen")} />
           <Text style={styles.text}>Ontstressen</Text>
         </View>
         <TouchableOpacity style={styles.themaButton}>
           <Text>Thema</Text>
         </TouchableOpacity>
-        <ScrollView style={{flex: 2}} contentOffset={{x: 0, y: 500}}>
-          <ImageBackground source={require("./../assets/images/background_city.png")} style={styles.backgroundImage} >
+        <ScrollView style={{ flex: 2 }} contentOffset={{ x: 0, y: 500 }}>
+          <ImageBackground source={require("./../assets/images/background_mountain.png")} style={styles.backgroundImage} >
             <View>
-              <TouchableOpacity style={[styles.circle, styles.circleDone]} onPress={() => navigate("OefeningDetail", {screen: "ReisDetail"})}>
+              <TouchableOpacity style={[styles.circle, styles.circleDone]} onPress={() => navigate("OefeningDetail", { screen: "ReisDetail" })}>
                 <Text style={[styles.circleText, styles.circleDoneText]}>1</Text>
               </TouchableOpacity>
               <TouchableOpacity style={[styles.circle, styles.circle2, styles.circleDone]}>
@@ -57,26 +57,33 @@ export default class ReisDetailScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
-      paddingTop: 20,
-      backgroundColor: '#BDE2F6'
-   },
+    flex: 1,
+    paddingTop: 20,
+    backgroundColor: '#BDE2F6'
+  },
   backgroundImage: {
-      flex: 1,
-      resizeMode: 'cover',
-      height: 1100,
+    flex: 1,
+    resizeMode: 'cover',
+    height: 1100
   },
   header: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    alignSelf: "center",
     paddingBottom: 10,
   },
   text: {
     fontSize: 18,
+    alignSelf: "center",
+    paddingLeft: 10,
+    fontWeight: "bold"
+  },
+  arrow: {
+    paddingLeft: 20,
+    paddingTop: 10
   },
   circle: {
-    marginTop: 890, 
+    marginTop: 890,
     marginLeft: 60,
     width: 50,
     height: 50,
@@ -94,15 +101,15 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   circle2: {
-    marginTop: 820, 
+    marginTop: 820,
     marginLeft: 260,
   },
   circle3: {
-    marginTop: 620, 
+    marginTop: 620,
     marginLeft: 60,
   },
   circle4: {
-    marginTop: 550, 
+    marginTop: 550,
     marginLeft: 260,
   },
   circle5: {
