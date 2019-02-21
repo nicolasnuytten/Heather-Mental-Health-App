@@ -1,0 +1,437 @@
+{
+  "reizen": {
+    "voltooid": [
+      {
+        "id": "01",
+        "name": "Goedemorgen",
+        "goals": "4",
+        "date": "26/01/2019"
+      },
+      {
+        "id": "02",
+        "name": "Avondritueel",
+        "goals": "6",
+        "date": "24/01/2019"
+      },
+      {
+        "id": "03",
+        "name": "Productiviteit",
+        "goals": "3",
+        "date": "21/01/2019"
+      }
+    ],
+    "reizen": [
+      {
+        "id": "01",
+        "name": "Ontstressen",
+        "goalsDone": "2",
+        "goalsTotal": "7",
+        "started": "2d"
+      },
+      {
+        "id": "02",
+        "name": "Motivatie boost",
+        "goalsDone": "4",
+        "goalsTotal": "5",
+        "started": "3d"
+      },
+      {
+        "id": "03",
+        "name": "Meditatie",
+        "goalsDone": "5",
+        "goalsTotal": "7",
+        "started": "5d"
+      },
+      {
+        "id": "04",
+        "name": "Focus",
+        "goalsDone": "2",
+        "goalsTotal": "4",
+        "started": "9d"
+      }
+    ],
+    "oefening": [
+      {
+        "id": "01",
+        "name": "Gefocust ademhalen",
+        "tags": "gezondheid",
+        "intro": "Gefocust ademhalen of een bepaald ritme om te rust te bekomen.",
+        "time": "5min.",
+        "rate": "1",
+        "category": "Focus"
+      },
+      {
+        "id": "02",
+        "name": "De boom",
+        "tags": "Yoga, concentratie",
+        "intro": "De boomhouding is een basishouding binnen yoga en bevorderd je concentratie!",
+        "steps": [
+          {
+            "step": "1",
+            "instruction": "Ga rechtop staan en verdeel je gewicht over beide voeten zodat je stabiel staat."
+          },
+          {
+            "step": "2",
+            "instruction": "Plaats je linkervoet tegen het gestrekte rechterbeen, en zoek je balans. Naarmate je de oefening beter beheerst kun je de voetzool steeds hoger tegen het gestrekte been laten leunen."
+          },
+          {
+            "step": "3",
+            "instruction": "Maak jezelf lang door helemaal recht te staan. Plaats je handen tegen elkaar in een bid-houding en ontspan je schouders."
+          },
+          {
+            "step": "4",
+            "instruction": "Span de spieren van je gestrekte been aan. Houd de heupen recht en breng de linkerknie naar buiten."
+          },
+          {
+            "step": "5",
+            "instruction": "Adem rustig en diep. Probeerde houding voor 30 seconden vol te houden."
+          },
+          {
+            "step": "6",
+            "instruction": "Na 30 seconden wissel je van standbeen."
+          }
+        ],
+        "time": "1min.",
+        "rate": "1",
+        "category": "Focus"
+      },
+      {
+        "id": "03",
+        "name": "De adelaar",
+        "tags": "Yoga, concentratie",
+        "intro": "De adelaar zorgt voor focus want die heb je immers nodig om deze yogahouding uit te voeren!",
+        "steps": [
+          {
+            "step": "1",
+            "instruction": "Ga rechtop staan met je voeten ter hoogte van je schouders."
+          },
+          {
+            "step": "2",
+            "instruction": "Buig door je knieën en houd je rug recht."
+          },
+          {
+            "step": "3",
+            "instruction": "Breng je rechterbeen over je linkerbeen, daarna haak je je linkervoet onder je rechterbeen."
+          },
+          {
+            "step": "4",
+            "instruction": "Kruis je linker elleboog over je rechter elleboog en breng je handpalmen samen."
+          },
+          {
+            "step": "5",
+            "instruction": "Adem rustig en diep. Probeerde houding voor 30 seconden vol te houden."
+          },
+          {
+            "step": "6",
+            "instruction": "Na 30 seconden wissel je de houding."
+          }
+        ],
+        "time": "1min.",
+        "rate": "2",
+        "category": "Focus"
+      },
+      {
+        "id": "04",
+        "name": "De magie van Mozart",
+        "tags": "Audio, productiviteit",
+        "intro": "Onderzoek heeft aangetoond dat het luisteren naar klassieke muziek tijdens je werk je een tijdelijke concentratie boost geeft. Vooral bij de muziekstukken van Mozart, daarom hebben wij voor jou de perfecte klassieke concentratiesessie samengesteld!",
+        "time": "30min.",
+        "rate": "1",
+        "category": "Focus"
+      },
+      {
+        "id": "05",
+        "name": "Pomodoro Techniek",
+        "tags": "Concentratie, productiviteit",
+        "intro": "Voor deze oefening heb je een beetje discipline nodig maar maak je geen zorgen, deze techniek zorgt ervoor dat je werk voorbij vliegt!",
+        "steps": [
+          {
+            "step": "1",
+            "instruction": "De timer start op 25min, in deze tijd zal je je volledig focussen op je taak!"
+          },
+          {
+            "step": "2",
+            "instruction": "Als de timer af gaat neem je een korte pauze van 5min. Ga even wandelen, maak een koffie, … doe iets dat totaal niks met je taak te maken heeft."
+          },
+          {
+            "step": "3",
+            "instruction": "Deze twee stappen stellen één pomodoro voor, als  4 pomodoros hebt gedaan mag je eens een langere pauze van 20min nemen."
+          },
+          {
+            "step": "4",
+            "instruction": "Dit herhaal je zo vaak je wil, tot je de klus geklaard hebt!"
+          }
+        ],
+        "time": "2u15min.",
+        "rate": "2",
+        "category": "Focus"
+      },
+      {
+        "id": "06",
+        "name": "Omgaan met verlies",
+        "tags": "Audio, rouw",
+        "intro": "Je hebt iemand verloren maar hoe ga je daar juist mee om? Ontspan en laat je gedachten even los met deze rustgevende podcast over het verliezen van een dierbare en het omgaan met rouw.",
+        "time": "20min.",
+        "rate": "1",
+        "category": "Leven"
+      },
+      {
+        "id": "07",
+        "name": "52 weken spaarplan",
+        "tags": "Geld",
+        "intro": "Wil je graag meer sparen? Dit is een iets langere maar leuke uitdaging om juist dat te doen. Op het einde van deze uitdaging zal je een 1378 euro bij elkaar hebben! De oefening is simpel, in week één leg je één euro opzij. In week twee leg je twee euro opzij. Zo ga je door tot week 52 euro in week 52. Je kan ook vanaf 52 euro beginnen en zo je weg naar beneden werken als dit je beter ligt!",
+        "time": "52 weken",
+        "rate": "3",
+        "category": "Leven"
+      },
+      {
+        "id": "08",
+        "name": "Welles-nietes",
+        "tags": "Relaties, conflict",
+        "intro": "Het is belangrijk in een relatie om frustraties op een respectvolle manier te kunnen uitten. Deze oefening, ook wel ABA gesprek genoemd, maakt een eind aan ‘welles-nietes’ discussies en laat toe je hart te luchten aan elkaar. Spreek dit moment af met je gesprekspartner zodat je beide de tijd kan nemen. Zorg voor een blaadje papier en een pen. Spreek af wie A en wie B is, geen nood, op het einde wordt er gewisseld.",
+        "steps": [
+          {
+            "step": "1",
+            "instruction": "A schrijft al zijn/haar frustraties op het blaadje papier, daarna verteld A de eerste notitie aan B."
+          },
+          {
+            "step": "2",
+            "instruction": "B luistert naar A zonder te discussiëren en verplaatst zich in de schoenen van A."
+          },
+          {
+            "step": "3",
+            "instruction": "Daarna vat B de eerste notitie van A samen en A bevestigt of B dit correct heeft begrepen. Zo niet herhaald A zijn/haar notitie."
+          },
+          {
+            "step": "4",
+            "instruction": "Zo gaan jullie alle notities af en wisselen jullie van plaats eens klaar."
+          }
+        ],
+        "time": "15min.",
+        "rate": "2",
+        "category": "Leven"
+      },
+      {
+        "id": "09",
+        "name": "Soulgazing",
+        "tags": "Relaties, intiem",
+        "intro": "Deze oefening is een verbindende maar tegelijkertijd intimiderende ervaring. Zeker als je het niet gewend bent in elkaars ogen te kijken. Hoewel deze oefening soms op de lachspieren kan werken is het toch een serieuze opdracht die vele emoties kan losmaken en jullie dichter bij elkaar brengen! Druk op start en kijk elkaar diep in de ogen…",
+        "time": "5min.",
+        "rate": "2",
+        "category": "Leven"
+      }
+    ]
+  },
+  "tags_1": {
+    "positive": [
+      {
+        "name": "Ontspannen"
+      },
+      {
+        "name": "Geliefd"
+      },
+      {
+        "name": "Actief"
+      },
+      {
+        "name": "Inspirerend"
+      },
+      {
+        "name": "Trots"
+      },
+      {
+        "name": "Optimistisch"
+      },
+      {
+        "name": "Productief"
+      },
+      {
+        "name": "Hoopvol"
+      },
+      {
+        "name": "Opgewonden"
+      }
+    ],
+    "negative": [
+      {
+        "name": "Boos"
+      },
+      {
+        "name": "Verdriet"
+      },
+      {
+        "name": "Moe"
+      },
+      {
+        "name": "Eenzaam"
+      },
+      {
+        "name": "Angst"
+      },
+      {
+        "name": "Teleurgesteld"
+      },
+      {
+        "name": "Stress"
+      },
+      {
+        "name": "Onzeker"
+      },
+      {
+        "name": "Verward"
+      }
+    ]
+  },
+  "tags_2": [
+    {
+      "name": "School"
+    },
+    {
+      "name": "Werk"
+    },
+    {
+      "name": "Sport"
+    },
+    {
+      "name": "Feest"
+    },
+    {
+      "name": "Entertainment"
+    },
+    {
+      "name": "Winkelen"
+    },
+    {
+      "name": "Reizen"
+    },
+    {
+      "name": "Ontspanning"
+    },
+    {
+      "name": "Vrienden"
+    },
+    {
+      "name": "Date"
+    }
+  ],
+  "organisaties": [
+    {
+      "name": "Awel",
+      "info": "Awel ik wil wel een babbel!",
+      "phone": "102",
+      "chat": "www.awel.be/chat",
+      "site": "www.awel.be"
+    },
+    {
+      "name": "Zelfmoordlijn",
+      "info": "Dringend nood aan een gesprek?",
+      "phone": "1813",
+      "chat": "www.zelfmoordlijn1813.be/chat-met-zelfmoordlijn-1813",
+      "site": "www.zelfmoordlijn1813.be"
+    },
+    {
+      "name": "Jongeren Advies Centrum (JAC)",
+      "info": "Voor jongeren met een vraag of probleem",
+      "phone": "www.caw.be/jac/contacteer-ons/kom-langs/",
+      "chat": "www.jac.be/chat",
+      "site": "www.jac.be"
+    },
+    {
+      "name": "Allesoverseks.be",
+      "info": "Info & antwoorden over seks, SOA's, relaties, ...",
+      "site": "www.allesoverseks.be"
+    },
+    {
+      "name": "De Druglijn",
+      "info": "Alles over drank, drugs, gamen en gokken",
+      "phone": "078 15 10 20",
+      "chat": "www.druglijn.be/stel-je-vraag/chat",
+      "site": "www.druglijn.be"
+    },
+    {
+      "name": "Wat Wat",
+      "info": "Advies over school, relaties, maatschappij, ...",
+      "site": "www.watwat.be"
+    },
+    {
+      "name": "Teleblok",
+      "info": "Omgaan met studeren, examenstress, ...",
+      "chat": "www.teleblok.be/chat/contact_opnemen_met_teleblok",
+      "site": "www.teleblok.be"
+    }
+  ],
+  "test": [
+    {
+      "id": "1",
+      "category": "Focus",
+      "question": "Zou je je dagen graag productiever maken?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_0"
+    },
+    {
+      "id": "2",
+      "category": "Focus",
+      "question": "Kan je je goed concentreren?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_1"
+    },
+    {
+      "id": "3",
+      "category": "Rust",
+      "question": "Sta je open voor meditatie?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_2"
+    },
+    {
+      "id": "4",
+      "category": "Rust",
+      "question": "Worden de hoge verwachting van je omgeving je soms te veel?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_3"
+    },
+    {
+      "id": "5",
+      "category": "Rust",
+      "question": "Doe je graag aan fysieke ontspanning?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_4"
+    },
+    {
+      "id": "6",
+      "category": "Leven",
+      "question": "Heb je soms last van een gat in de hand?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_5"
+    },
+    {
+      "id": "7",
+      "category": "Leven",
+      "question": "Zou je de band met je partner graag versterken?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_6"
+    },
+    {
+      "id": "8",
+      "category": "Leven",
+      "question": "Ben je onlangs iemand verloren in je leven?",
+      "answer1": "Ja",
+      "answer2": "Nee",
+      "img": "./images/test_7"
+    },
+    {
+      "id": "9",
+      "category": "Slaap",
+      "question": "Hoe is je slaapritme?",
+      "answer1": "Goed",
+      "answer2": "Slecht",
+      "img": "./images/test_8"
+    }
+  ]
+}
